@@ -1,0 +1,51 @@
+//- #########################################################
+
+	ファイル概要：コピーライトなどのフッタ用ファイル
+
+	#########################################################
+
+//- お問い合わせ
+article.area_company_pr
+	a(href="https://rhythmfactory.jp/" target="_blank" title="株式会社リズムファクトリー").button.js_btn_slide
+		h3 CONTACT WITH RHYTHMFACTORY
+		p リズムファクトリーはホームページの制作会社です。
+			br
+			| ホームページ制作に関するご要望・ご相談はこちらからどうぞ。
+		div.btn_circle
+			span.arrow.arrow_o_right
+
+//- トップに戻る
+a(href="#top" class="btn_backtotop")
+	span.arrow.arrow_o_up
+
+//- フッタ
+footer.site_footer
+	article.area_sitemap
+		ul.layout_ul
+			li
+				h1
+					a(href="/" title="smart")
+						img(src="/common/img/common/logo.svg")
+			li
+				h2 Programming Language
+				ul.link_list
+					each item in CATEGORY_P
+						li
+							a(href=item.url title=item.title_j+" -"+item.sup) #{item.title}
+			li
+				h2 Server Side
+				ul.link_list
+					each item in CATEGORY_S
+						li
+							a(href=item.url title=item.title_j+" -"+item.sup) #{item.title}
+
+	aside.area_go_rhythmfactory
+		a(href="https://rhythmfactory.jp/" target="_blank" title="株式会社リズムファクトリー")
+			img(src="/common/img/common/logo_rhythmfactory.svg")
+			span.arrow.arrow_right リズムファクトリーのオフィシャルホームページ
+
+	p.copyright
+		small !{copyright}
+
+//- JSファイルの読み込み
+script(src=js_path+"/"+jsfile)

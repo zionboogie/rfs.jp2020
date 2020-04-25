@@ -1,0 +1,165 @@
+//- #########################################################
+
+	ファイル概要：テンプレートファイル
+
+	#########################################################
+
+//- サイト共通レイアウトファイルを継承
+extends _layout.pug
+
+//- _layout.pugのvarsを再定義
+block vars
+	//- サイト全体の設定ファイルの読み込み
+	include _config.pug
+	//- ページ用変数を設定
+	- 
+		//- ページID
+		var id = "category"
+		//- ページ設定
+		var page = {
+			url : 'category.html',
+			title : 'カテゴリ一覧',
+			description : '',
+			keywords : '',
+			image : image_path + '/ogp.jpg'
+		}
+		//- CSSファイル名
+		var cssfile = 'category.css'
+		//- JSファイル名
+		var jsfile = 'category-dist.js'	
+
+//- _layout.pugのcontentsを再定義
+block contents
+	main.container
+
+		ul.breadcrumbs
+			li
+				//- span.arrow.arrow_o_right
+				a(href="")
+					| Home
+			li
+				//- span.arrow.arrow_o_right
+				a(href="")
+					| プログラミング言語・コーディング
+		.page_list_header
+			.inner.trans
+				//- img(src="/common/img/category/p03.jpg")
+				.visual_meta
+					h1 HTML
+					p ウェブ上で公開されているホームページのほとんどは、『HTML』（ハイパー・テキスト・マークアップ・ランゲージ）と呼ばれる言語で記述されています。HTMLは文書の構造や見栄えを決定するための言語で、テキストはもちろん、画像・音声・動画を表示させることができます。特徴的なのは、ハイパーリンクという機能です。ドキュメントの中に埋め込まれたハイパーリンクをクリックすると、関連付けられた文書に遷移し、容易に必要な情報を取得することができます。
+						br
+						| HTML講座では、ホームページを作成するためのHTMLリファレンスと、コーディングガイドラインや、CSS、JavaScriptといった関連技術の紹介、スマートフォン対応などを詳しく説明しています。
+					a(href="").btn_line_anime
+						span LEARN MORE
+					//- div.btn
+					//- 	span.arrow.arrow_right
+					//- 	| LEARN MORE
+					//- div.btn_viewmore LEARN MORE
+
+
+		//- 最新の記事一覧
+		div.are_list
+			.inner
+				.no chapter
+					br
+					span 01
+				h3 HTML・CSSテックラボ
+
+			ul.post_list
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| ファイル連結とUglifyを使った圧縮で発生するエラーと、その対処法
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| 背景画像の拡大・縮小
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| 幅を越えた文字列を三点リーダー（…）で省略（複数行対応）
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| HTMLエスケープ
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| SSIでPCとスマートフォンの出力を切り替える
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| HTML5のコンテンツモデル
+				li
+					a(href="") 
+						i.fa.icon-paper-plane-empty
+						| ファビコン作成のまとめ
+
+		//- 最新の記事一覧
+		div.are_post_list
+			.inner
+				h2 Latest Posts
+				ul.post_list
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post1
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+
+					li
+						figure.li_img
+							a(href="")
+								.new
+									span new
+								img(src="/common/img/common/dummy.jpg").lazy.post2
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post3
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post4
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post5
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.

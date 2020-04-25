@@ -1,0 +1,564 @@
+@charset "UTF-8";
+/*#########################################################
+
+読み込み
+
+#########################################################*/
+// 基本設定
+@import "common.scss";
+@import "swiper.min";
+
+
+
+.container{
+	margin-top: $mg*15;
+	@include mq(sm){
+		margin-top: $mg*8;
+	}
+}
+
+
+
+
+/* ========================================================
+ロゴのCSSアニメーション
+=========================================================*/
+$line: #aedadd;
+$fill: #434343;
+@keyframes logo {
+	0%{
+		fill: transparent;	//塗りつぶし
+	}
+	50%{
+		fill: transparent;
+	}
+	95%{
+		stroke-opacity: 1;	//塗りつぶし
+	}
+	100%{
+		stroke-dashoffset: 0;
+		fill: $fill;
+		stroke-opacity: 0;
+	}
+}
+// サイトロゴ
+.logo_svg{
+	.logo_path{
+		stroke: $line;	//線の色
+		stroke-dasharray: 1000;	//線の間隔
+		stroke-dashoffset: 1000;	//点線の開始位置
+		stroke-width: 0.5;	//線の太さ
+		animation: logo 3s ease-in 0s;
+	}
+}
+
+
+/* ========================================================
+スライダ
+=========================================================*/
+.area_hook {
+	height: calc(100vh - #{$h-header});
+	@include mq(sm){
+		height: calc(100vh - #{$h-s-header});
+	}
+
+	&.swiper-container {}
+	> .inner {
+		margin: 0 auto;
+
+		&.swiper-wrapper {}
+
+		.swiper-slide {
+			position: relative;
+			opacity: 0;
+			transition: opacity 1.5s ease-out;
+			width: 100% !important;
+			&.active{
+				opacity: 1;
+			}
+			.swper-content {
+				position: relative;
+				margin: auto;
+				// width: $w-content;
+				width: 90%;
+				height: 100%;
+				z-index: 2;
+			}
+		}
+		.swiper-lazy{
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			@include mq(sm){
+				width: 100%;
+			}
+
+		}
+		.mv01, .mv02{
+			h2 {
+				margin: $mg*5 0 $mg*6;
+				font-size: $unit*12;
+				line-height: 0.7;
+				@include mq(sm){
+					margin: $mg*2 0 $mg*3;
+					font-size: $unit*6;
+				}
+				span {
+					&:nth-child(2){
+						margin-left: $mg*7;
+						font-weight: bold;
+						@include mq(sm){
+							color: #000;
+							// font-weight: normal;
+						}
+					}
+					&:nth-child(3){
+						margin-left: $mg*18;
+					}
+				}
+			}
+			h3 {
+				margin-bottom: $mg*2;
+				padding: 0 $mg*4;
+				display: inline-block;
+				color: #fff;
+				background: #000;
+				@include mq(sm){
+					padding: $mg $mg*2;
+					line-height: 1.2;
+				}
+			}
+			.split{
+				margin-bottom: $mg*3;
+				height: 180px;
+				@include mq(sm){
+					height: 140px;
+				}
+			}
+			p{
+				span{
+					background: #fff;
+					color: #000;
+					font-size: $unit*2;
+				}
+			}
+		}
+		.mv02{
+			// background-image: url("/common/img/top/bg4.jpg");
+			color: #fff;
+		}
+	}
+}
+
+// メインビジュアル最下部の	［explore］アニメーション
+a.btn_scroll {
+	padding-top: $mg*7;
+	position: absolute;
+	bottom: $mg*5;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 2;
+	display: inline-block;
+	color: #000;
+	font-size: $unit*2;
+	font-weight: bold;
+	letter-spacing: .1em;
+	text-decoration: none;
+	transition: opacity .3s;
+	@include mq(sm){
+		bottom: $mg*4;
+		font-size: $unit*1.6;
+	}
+	&:hover{
+		color: #fff;
+	}
+	span {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 24px;
+		height: 24px;
+		margin-left: -12px;
+		border-left: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		transform: rotate(-45deg);
+		animation: sdb05 1.5s infinite;
+		box-sizing: border-box;
+	}
+}
+@keyframes sdb05 {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(-45deg) translate(-20px, 20px);
+		opacity: 0;
+	}
+}
+
+
+/* ========================================================
+スライダー1枚目のアニメーション
+=========================================================*/
+$secondary-color: #fff;
+$tertiary-color: #000;
+
+.h_anime,
+.h_anime2 {
+	opacity: 0;
+}
+.mv01, .mv02{
+	&.active{
+		.h_anime,
+		.h_anime2 {
+			opacity: 1;
+			// text-transform: uppercase;
+			span {
+				width: 100%;
+				float: left;
+				color: $tertiary-color;
+				opacity: 0;
+				animation-name: titleAnimation;
+				animation-timing-function: ease;
+				animation-duration: 8s;
+				animation-iteration-count: infinite;
+			}
+		}
+		.h_anime span {
+			animation-delay: 0.6s;
+			&:first-child {
+				animation-delay: 0.7s;
+			}
+			&:last-child {
+				color: $secondary-color;
+				animation-delay: 0.5s;
+			}
+		}
+	}
+}
+
+@keyframes titleAnimation {
+	0% {
+		transform: translateY(-50px);
+		opacity: 0;
+		clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+	}
+	// 10% {
+	// 	transform: translateY(0);
+	// 	opacity: 1;
+	// 	clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+	// }
+	20% {
+		transform: translateY(0);
+		opacity: 1;
+		clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+	}
+	80% {
+		transform: translateY(0);
+		opacity: 1;
+		clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+	}
+	100% {
+		transform: translateY(50px);
+		opacity: 0;
+		clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%);
+	}
+}
+
+.swiper-pagination-bullet-active{
+	background: #fff;
+}
+
+
+
+/* ========================================================
+記事一覧
+=========================================================*/
+.area_articles_list {
+	padding-bottom: $mg*10;
+
+	> .inner {
+		margin: 0 auto;
+		max-width: $w-content;
+		text-align: center;
+		h2 {
+			margin: auto auto $mg*5;
+			padding: $mg*8 $mg*4 $mg*5;
+			text-align: center;
+			display: block;
+			background: url(/common/img/common/h_line.svg) no-repeat center bottom;
+			background-size: 500px;
+		}
+		h3{
+			margin-bottom: $mg*4;
+			font-weight: bold;
+		}
+	}
+}
+
+
+/* ========================================================
+広告領域
+=========================================================*/
+.box_ad{
+	background: #f6f6f6;
+}
+
+
+/* ========================================================
+スライダー用
+=========================================================*/
+.swiper-container2, .swiper-container3, .swiper-container4{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	.swiper-wrapper{
+		margin-bottom: $mg*4;
+		@include mq(sm){
+			margin-bottom: 0;
+		}
+		.swiper-slide{
+			width: 300px;
+			@include mq(sm){
+				width: 100%;
+			}
+			a.post_item{
+				display: block;
+				width: 100%;
+				height: 100%;
+				padding-top: $mg*4;
+				border-top: 1px solid $c-line;
+				text-decoration: none;
+				@include mq(sm){
+					width: auto;
+					padding: $mg*4 $mg;
+				}
+				.inner{
+					margin-bottom: $unit*2;
+					h4{
+						margin-bottom: $mg*2;
+						font-weight: bold;
+						@include mq(sm){
+							font-size: $unit*2;
+						}
+						span{
+							font-weight: normal;
+						}
+
+					}
+					p{
+						margin-bottom: $mg*2;
+					}
+				}
+
+			}
+		}
+	}
+	.swiper-button-prev2, .swiper-button-prev3,
+	.swiper-button-next2, .swiper-button-next3{
+		position: absolute;
+		margin-top: -45px;
+		top: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 100;
+		height: 90px;
+		width: 30px;
+		color: #fff;
+		transition: opacity, width 0.3s ease-out;
+		font-size: $unit*1.4;
+		background: $c-accent;
+		opacity: 0.6;
+		&:after{
+			display: block;
+			writing-mode: vertical-rl;
+		}
+		&:hover{
+			opacity: 1;
+			width: 50px;
+		}
+	}
+	.swiper-button-prev2, .swiper-button-prev3{
+		left: 0px;
+		&:after{
+			content: "previous";
+		}
+	}
+	.swiper-button-next2, .swiper-button-next3{
+		right: 0px;
+		&:after{
+			content: "next";
+		}
+	}
+	.swiper-pagination2, .swiper-pagination3, .swiper-pagination4{
+		text-align: center;
+		.swiper-pagination-bullet-active{
+			background: #000;
+		}
+	}
+}
+/* ========================================================
+Best Music
+=========================================================*/
+.swiper-container4{
+	.swiper-wrapper{
+		.swiper-slide{
+			width: 350px;
+			text-align: center;
+			.js_open_modal_music{
+				display: block;
+				text-align: center;
+			}
+			@include mq(sm){
+				width: 100%;
+			}
+			.sp{
+				iframe.youtube-player{
+					width: 100%;
+				}
+			}
+		}
+	}
+	.swiper-pagination4{
+		margin-bottom: $mg*4;
+		.swiper-pagination-bullet{
+			background: #fff;
+		}
+		.swiper-pagination-bullet-active{
+			background: #fff;
+		}
+	}
+}
+
+/* ========================================================
+Best Music:記事一覧
+=========================================================*/
+.area_music_list{
+	padding-bottom: $mg*5;
+	background: #000;
+	color: #fff;
+	@include mq(sm){
+		padding-bottom: $mg*2;
+	}
+	a{
+		color: #cfb896;
+	}
+	>.inner{
+		max-width: $w-content;
+		margin: 0 auto;
+		h2{
+			background: none;
+			margin: auto;
+			padding: $mg*5 0;
+			text-align: center;
+			@include mq(sm){
+				padding: $mg*2 0;
+			}
+
+		}
+	}
+	.btn_viewmore{
+		text-decoration: none;
+		&:hover{
+			opacity: 1;
+			color: #fff;
+		}
+	}
+}
+
+
+
+
+/*#########################################################
+
+モーダル
+
+#########################################################*/
+/* ========================================================
+閉じるボタン(a,button要素)
+=========================================================*/
+.btn_close{
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	text-indent: -9999px;
+	border: 0;
+	background-color:#000;
+	border-radius:32px;
+	margin: 0;
+	padding: 0;
+	transform:scale(0.5);
+	cursor:pointer;
+	&::before,
+	&::after {
+		content:"";
+		position: absolute;
+		display: inline-block;
+		top: 14px;
+		left: 30px;
+		width: 4px;
+		height: 36px;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		background-color:#fff;
+	}
+	&::before {
+		transform:rotate(45deg);
+	}
+	&::after {
+		transform:rotate(-45deg);
+	}
+}
+
+.modal {
+	position: fixed;
+	display: none;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: $mg*20 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	@include mq(sm) {
+		z-index: 2500;
+		padding: $mg*1 0;
+		overflow: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	>.outer{
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 750px;
+		margin: auto;
+		background: #000;
+		border-radius: 8px;
+		@media (max-width: 1073px) {
+			width: 90%;
+		}
+
+		// 閉じるボタン
+		.btn_close{
+			position: absolute;
+			top: -30px;
+			right: -30px;
+			z-index: 1000;
+		}
+		>.inner {
+			display: none;
+		}
+	}
+
+}
+
+// 開くアクション
+.js_show_modal {
+	display: block;
+}

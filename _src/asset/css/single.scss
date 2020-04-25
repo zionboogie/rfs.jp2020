@@ -1,0 +1,924 @@
+@charset "UTF-8";
+/*#########################################################
+
+読み込み
+
+#########################################################*/
+// 基本設定
+@import "common.scss";
+@import "swiper.min";
+
+// ATTENTION
+@import "https://rfs.jp/wp-content/plugins/table-of-contents-plus/screen.min.css?ver=2002";
+
+
+// $c-font: rgb(236, 195, 83);	// フォントカラー
+$c-font: #343434;	// フォントカラー
+$c-bg: #000;	// 背景色
+$c-anchor: #000;	// リンク色
+$c-anchor-hover: #959595;	// ホバー時のリンク色
+$c-anchor-active: #00a0e9; // アクティブ時のリンク色
+$c-anchor-visited: $c-anchor; // 訪問済み時のリンク色
+$c-anchor-focus: $c-anchor-hover; // フォーカス時のリンク色
+$c-lightgray: #959595;
+
+// ボタン用のプレースホルダ
+%btn {
+	display: inline-block;
+	border-radius: 2px;
+	padding: 8px 10px;
+	white-space: nowrap;
+	border: 1px solid $c-lightgray;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	background-color: #fff;
+}
+%btn-hover {
+	border: 1px solid $c-line;
+	color: #fff;
+	background: $c-darkgray;
+}
+
+/*#########################################################
+
+共通設定の変更
+
+#########################################################*/
+
+body{
+	background: url(/common/img/single/bg.jpg) no-repeat #fff;
+}
+
+.site_header{
+	background: none;
+}
+.container{
+}
+
+
+
+
+/* ========================================================
+ヘッダ
+=========================================================*/
+// コンテンツ幅エリアのプレースホルダ
+%site_header_single {
+}
+.site_header{
+	&.smaller{
+		background: #000;
+		opacity: 0.85;
+		.site_logo{
+			a{
+				// サイトロゴSVG
+				.logo_svg{
+					// ロゴ
+					.logo_path{
+						fill: #fff !important;
+					}
+				}
+			}
+		}
+	}
+	@include mq(sm){
+		background: #000;
+		opacity: 0.85;
+		.site_logo{
+			a{
+				// サイトロゴSVG
+				.logo_svg{
+					// ロゴ
+					.logo_path{
+						fill: #fff !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*#########################################################
+
+記事ページ
+
+#########################################################*/
+
+$width-entry: 750px;
+$width-sub: 300px;
+$width-margin: 80px;
+
+$width-pc: $width-entry + $width-margin*3 + $width-sub;	/* 1290 80*3+750+300 */
+
+.wrapper_entry_sub{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	font-size: $unit*1.7;
+
+// border-top: solid 4px #ee0979;
+max-width: $w-content;
+margin: auto;
+box-shadow: 5px -15px 30px -30px rgba(0, 0, 0, 0.4);
+background: #fff;
+
+	@include mq(sm){
+		flex-direction: column;
+	}
+
+	&::before,
+	&::after{
+		position: absolute;
+		content: '';
+		display: block;
+		width: 100%;
+		height: 4px;
+		background: linear-gradient(to left, #8f82bc, $c-accent);
+	}
+
+	// 記事ページのラッパー
+	.entry_container{
+		@extend %w-content;
+		padding: 0 $mg*8;
+		// flex-grow/flex-shrink/flex-basis
+		flex: 2 1 auto;
+		@include mq(sm){
+			padding: 0;
+		}
+		.entry{
+			margin-bottom: $mg*10;
+			// 外部サイトのアイコン（fontello）
+			a[href^="http://"]:before, a[href^="https://"]:before {
+				font-family: '_smartfont';
+				content: '\e804';
+				margin-right: 3px;
+			}
+		}
+
+	}
+	/* サブカラム */
+	.sub {
+		width: $width-sub;
+		margin-right: $width-margin;
+		margin-top: $unit*3;
+		// flex-grow/flex-shrink/flex-basis
+		flex: 1 0 auto;
+		@media screen and (max-width: $width-pc+20) {
+			margin: $unit*2 auto;
+			width: 95%;
+		}
+	}
+}
+
+
+/* ========================================================
+記事ヘッダ
+=========================================================*/
+.entry_header {
+	pointer-events: none;
+	text-align: center;
+	z-index: 1;
+	width: 100%;
+	@include mq(sm){
+		height: auto;
+	}
+	.category_header{
+		font-size: $unit*12;
+		font-weight: bold;
+		letter-spacing: 0.064em;
+		color: $c-frostywhite;
+		@include mq(sm){
+			font-size: $unit*6;
+			color: $c-darkgray;
+		}
+	}
+
+}
+.entry_metadata{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: $mg*8;
+	width: 100%;
+	flex: 3 0 auto;
+	@include mq(sm){
+		flex-direction: column;
+		margin-bottom: $mg*3;
+	}
+	.po_date{
+		margin-right: $mg*3;
+		@include mq(sm){
+			margin-bottom: $mg*2;
+		}
+	}
+	.related_link{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		.po_category{
+			margin-right: $mg;
+		}
+		a{
+			display: block;
+			margin-right: $mg;
+			padding: 0 $mg*1;
+			background: #000;
+			color: #fff;
+			text-decoration: none;
+			transition: background 0.3s ease-out;
+			&:hover{
+				background: $c-accent;
+			}
+		}
+	}
+}
+.js_entry_title {
+	margin-bottom: $mg*5;
+	font-weight: normal;
+	line-height: 1.4;
+	text-align: center;
+	font-size: $unit*4;
+	// text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+	width: 100%;
+	@include mq(sm){
+		padding-bottom: $unit*2;
+	}
+	.char_animation {
+		display: inline-block;
+		line-height: 1em;
+	}
+}
+.hide{
+	display: none;
+}
+
+
+/*#########################################################
+
+記事内の装飾
+
+#########################################################*/
+.entry_container{
+	// box-shadow: 5px 0px 13px 16px rgba(255, 255, 255, 2)
+	font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "Helvetica Neue", Helvetica, Arial, "メイリオ", Meiryo, sans-serif;
+
+	code {
+		display: inline-block;
+		margin: 0 $unit*0.2;
+		padding: $unit*0.2 $unit*0.5 $unit*0.2;
+		background-color: $c-frostywhite;
+		// color: #fff;
+		line-height: 1;
+		border-radius: 2px;
+		a {
+			color: #fff;
+		}
+	}
+	ol,
+	ul {
+		list-style: disc inside;
+		margin: 0 $unit*1 $unit*1.5;
+		line-height: 1.8;
+	}
+	ol li,
+	ul li {
+		margin-bottom: $unit*0.5;
+	}
+
+	ol {
+		list-style: decimal inside;
+	}
+	p {
+		margin-bottom: $unit*1.5;
+	}
+	pre{
+		// font-family: $font-family;
+		line-height: 1.5;
+	}
+	dl {
+		line-height: 1.8;
+		padding: $unit*1 $unit*1 $unit*0.2 $unit*1;
+		border-radius: 3px;
+		border: 1px solid $c-frostywhite;
+		margin-bottom: $unit*0.5;
+		dt {
+			font-weight: bold;
+		}
+		dd {
+			margin-bottom: $unit*1;
+			border-bottom: 1px dotted $c-frostywhite;
+			padding-bottom: 0.5rem;
+			&:last-child{
+				border-bottom: none;
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	table .box-config,
+	table div,
+	table p,
+	table table {
+		width: 100%;
+	}
+	/* table */
+	table {
+		margin: 0 auto $unit*2;
+		width: 100%;
+		td,
+		th {
+			padding: $unit*0.5 $unit*1;
+			border: 1px solid #ebebe3;
+			line-height: 1.8;
+		}
+		th {
+			background: #fcf8f3;
+			text-align: center;
+		}
+		td.td_strong {
+			font-weight: bold;
+		}
+	}
+	// テーブルのボーダーカラー
+	table.table-format02 {
+		td,
+		th {
+			border: none;
+			background-color: inherit;
+			font-weight: normal;
+			text-align: left;
+		}
+		tr {
+			background: #fff;
+		}
+		tr:nth-child(2n+1) {
+			background: #f5f5f5;
+		}
+	}
+	span.underline{
+		background-color: #ffff9d;
+		/*background-color: linear-gradient(transparent 60%,#ffff9d 0,#ffff9d 0);*/
+	}
+	.h-syntax, .h-output{
+		margin-bottom: -0.8rem;
+	}
+	.h-output{
+		margin-top: 1rem;
+	}
+	.h-codepen span {
+		background: #ef767f;
+		color: #fff;
+		margin-right: 0.5rem;
+		padding: 0 0.5rem;
+		border-radius: 3px;
+		font-weight: normal;
+	}
+	h5.h-html, h5.h-javascript, h5.h-css{
+		background-color: #ef767f;
+		color: #fff;
+		padding: 0 0.5rem;
+		font-weight: normal;
+	}
+
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: $mg*5 0 $mg*3 0;
+		font-weight: bold;
+		line-height: 1.8;
+	}
+	h2 {
+		margin-bottom: $mg*2;
+		padding-bottom: $mg*0.2;
+		border-bottom: 2px solid $c-darkgray;
+	}
+	h3 {
+		padding-bottom: $mg*0.2;
+		border-bottom: 1px solid $c-frostywhite;
+	}
+	img{
+		max-width: 100%;
+	}
+
+
+	.box-movie {
+		padding: 1rem;
+		background: #000;
+		color: #fff;
+		text-align: center;
+		// overflow: hidden;
+	}
+	.box-photo {
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		text-align: center;
+		overflow: hidden;
+	}
+	.box-comment {
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		background: #fcf8f3;
+		border-radius: 3px;
+		color: #111;
+		line-height: 1.8;
+		h1,h2,h3,h4,h5{
+			margin: 0 !important;
+		}
+	}
+	.box-browser {
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		border: 1px solid #ddd;
+		letter-spacing: 0.1em;
+	}
+	.box-config,
+	.box-program,
+	.box-shell {
+		//font-size: 116%;
+		line-height: 1.2;
+		box-sizing: border-box;
+	}
+	.box-shell {
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		width: 100%;
+		background: $c-darkgray;
+		color: #fff;
+		overflow: hidden;
+	}
+	.box-shell span {
+		padding-left: 17px;
+		background: url("common/i/wrap/icon.gif") -24px -504px no-repeat;
+	}
+	.box-program {
+		display: block;
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		width: 100%;
+		background: url("common/i/wrap/bg_program.gif") repeat-y #fff;
+	}
+	.box-config {
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		width: 100%;
+		background: #f3f3f3;
+		border-left: 5px solid #999;
+		line-height: 1.8;
+	}
+	.box-config-table {
+		margin-bottom: $unit*1;
+		padding: 1rem;
+		background: #f3f3f3;
+		border-left: 5px solid #999;
+	}
+	.img {
+		text-align: center;
+		img {
+			max-width: 90%;
+		}
+		a.box-source {
+			font-size: 0.8rem;
+			color: #959595;
+		}
+	}
+
+
+	/* func-format					##################################### */
+	/* func-header */
+	div.func-header {
+		margin-top: 20px;
+	}
+	div#content div.func-header h2 {
+		margin-top: 10px;
+	}
+	div.func-tree {
+		margin-left: 20px;
+	}
+	/* func-format */
+	.func-format {
+		margin: 20px auto;
+		width: 90%;
+		padding: 10px 15px;
+		background: #f3f3f3;
+		border-left: 5px solid #999;
+	}
+	.func-format-none {
+		margin: 20px 0 10px 20px;
+		height: 0;
+	}
+	/* func-compat */
+	.func-compat {
+		margin-left: 20px;
+		padding-bottom: 10px;
+	}
+	.func-compat span {
+		display: block;
+		float: left;
+		width: 15px;
+		height: 15px;
+	}
+	span.ic-perl4 {
+		// background: url("common/i/wrap/ic_perl4.gif");
+	}
+	span.ic-perl5 {
+		// background: url("common/i/wrap/ic_perl5.gif");
+	}
+	span.ic-win {
+		// background: url("common/i/wrap/ic_win.gif");
+	}
+	span.ic-mac {
+		// background: url("common/i/wrap/ic_mac.gif");
+	}
+	/* func-detail */
+	.func-detail {
+		clear: both;
+	}
+	.func-detail hr {
+		margin-top: 20px;
+		margin-left: 20px;
+		height: 3px;
+		background-color: #fff;
+		border-top: 1px solid #e9e9e9;
+		border-bottom: 1px solid #f3f3f3;
+		color: #fff;
+	}
+
+	// http://rfs.jp/sb/javascript/01js/04-5.html
+	.ul-reservedwords{
+		// @extend %list-flex;
+		list-style: none;
+		li{
+			width: 30%;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================================
+関連記事
+=========================================================*/
+.wp_rp_wrap{
+	margin-top: $unit*4;
+	margin-bottom: $unit*4;
+}
+.related_post_title{
+	border-top: 1px solid $c-frostywhite;
+	border-bottom: 1px solid $c-frostywhite;
+	padding: $unit*0.2 0;
+	font-size: $unit*1.5;
+}
+#entry .related_post{
+	margin: $unit*2 0;
+	list-style: none;
+}
+
+/* ========================================================
+コメント
+=========================================================*/
+.area_comment {
+	margin-top: $unit*4;
+	@include mq(sm){
+		input{
+			width: 100%;
+		}
+	}
+	// タイトル
+	h2.comments_title {
+		margin-bottom: $mg*2;
+		border-top: 1px solid $c-frostywhite;
+		border-bottom: 1px solid $c-frostywhite;
+		line-height: 2;
+	}
+	ol.comment_list {
+		list-style: none;
+		line-height: 1.8;
+		li {
+			margin-bottom: $mg*2;
+			padding-bottom: $unit*1;
+			border-bottom: 1px solid $c-frostywhite;
+		}
+	}
+	.comment_meta{
+		margin-bottom: $mg*2;
+		// コメントの著者
+		.comment_author {
+			color: $c-lightgray;
+			// ～より
+			.says {
+				display: none;
+			}
+			// 画像
+			.avatar {
+				margin-right: $unit*1;
+				border-radius: 50%;
+				float: left;
+				vertical-align: middle;
+			}
+		}
+		// 日付など
+		.comment_metadata {
+			font-size: $unit*1.4;
+			a {
+				color: $c-lightgray;
+			}
+			.edit_link {
+				margin-left: $unit*1;
+			}
+		}
+	}
+	.reply a {
+		@extend %btn;
+		&:hover {
+			@extend %btn-hover;
+		}
+	}
+	.comment_reply_title {
+		display: none;
+	}
+	.comment_form_comment{
+		label {
+			display: block;
+		}
+		textarea {
+			width: 100%;
+		}
+	}
+	.submit{
+		width: 100%;
+		height: $unit*8;
+		background-color: $c-darkgray;
+		border: 1px solid $c-darkgray;
+		color: #fff;
+		transition: border-color,background-color 0.3s ease-out;
+		&:hover{
+			border-color: $c-accent;
+			background: $c-accent;
+		}
+	}
+	label{
+		display: inline-block;
+	}
+}
+
+
+/* ========================================================
+記事エントリのページナビゲーション
+=========================================================*/
+.navigation {
+	display: flex;
+	justify-content: space-between;
+	padding: $unit*4 0;
+	width: 100%;
+	.nav_previous,
+	.nav_next {
+		width: 50%;
+		a{
+			display: flex;
+			text-decoration: none;
+			line-height: 2;
+			&:hover i {
+				background-color: $c-accent;
+				border: 1px solid $c-accent;
+				color: #fff;
+			}
+			span{
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+		    }
+			i {
+				display: flex;
+				flex-shrink: 0;
+				justify-content: center;
+				align-items: center;
+				padding-top: 3px;
+				width: $unit*3;
+				height: $unit*3;
+				border: 1px solid $c-lightgray;
+				border-radius: 2px;
+				font-size: $unit*0.8;
+				transition: all 0.3s ease;
+			}
+		}
+	}
+	.nav_previous {
+		a{
+			i{
+				margin-right: $mg;
+			}
+		}
+	}
+	.nav_next {
+		a{
+			justify-content: flex-end;
+			i{
+				margin-left: $mg;
+			}
+		}
+	}
+}
+
+
+/* ========================================================
+ソーシャルボタン
+=========================================================*/
+.social_icons_content {
+	width: 100%;
+	margin-bottom: $unit*2;
+	display: flex;
+	justify-content: space-between;
+	padding: $unit*1 0;
+	>a {
+		display: block;
+		width: 23%;
+		height: $mg*5;
+		border-radius: 2px;
+		background: #000;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		overflow: hidden;
+		text-decoration: none;
+		&:hover{
+			background: #ccc;
+			i:first-child {
+				margin-top: 11px;
+			}
+		}
+		i {
+			transition: all 0.3s ease;
+			display: block;
+			position: relative;
+			margin-top: 11px;
+			height: 100%;
+			width: 100%;
+			text-align: center;
+			font-size: 100%;
+			color: #fff;
+			&:first-child {
+				margin-top: -50px;
+			}
+		}
+	}
+	.btn_facebook:hover {
+		background: #3b5997 !important;
+	}
+	.btn_twitter:hover {
+		background: #00acee !important;
+	}
+	.btn_pocket:hover {
+		background: #dd4b39 !important;
+	}
+	.btn_hatebo:hover {
+		background: #00A5DE !important;
+	}
+
+	.btn_linkedin:hover {
+		background: #0e76a8 !important;
+	}
+	.btn_instagram:hover {
+		background: #3f729b !important;
+	}
+	.btn_tumblr:hover {
+		background: #36465d !important;
+	}
+}
+
+
+/* ========================================================
+広告枠
+=========================================================*/
+.box_ad_footer {
+	width: 100%;
+	margin: $unit*4 auto;
+	// padding: $unit*2 0;
+	text-align: center;
+	// background-color: $c-bg;
+}
+.box_ad_sub {
+	margin-bottom: $unit*2;
+	text-align: center;
+}
+.box_ad_entry{
+	margin: $unit*4 auto;
+	text-align: center;
+}
+
+
+
+
+
+/* ========================================================
+Table of Contents Plus
+=========================================================*/
+
+#toc_container{
+	margin: auto;
+	background: #fff;
+	border: 1px solid #efefef;
+	width: 99%;
+}
+#toc_container li a {
+	display: block;
+	padding: .5em 0;
+	border-top: 1px dotted #ddd;
+}
+.toc_list li{
+	line-height: 2;
+}
+
+
+
+
+
+/* ========================================================
+右カラム
+=========================================================*/
+/* サブカラム */
+.sub {
+	.widget {
+		margin-bottom: $unit*5;
+		background-color: #fff;
+		ul{
+			margin-bottom: $unit*2;
+		}
+	}
+	.widget_title {
+		margin: 0 0 $unit*1;
+		font-size: $unit*2;
+		line-height: 1.2;
+		span{
+			font-size: $unit*1.4;
+			color: $c-darkgray;
+		}
+	}
+
+	// カテゴリ
+	.widget_category{
+		ul{
+			&:first-child{
+				margin-bottom: $unit*4;
+			}
+		}
+	}
+
+	// カテゴリとアーカイブ
+	.widget_category,
+	.widget_archives {
+		ul{
+			list-style: none;
+			border: 1px solid $c-frostywhite;
+			li{
+				border-bottom: 1px solid $c-frostywhite;
+				&:last-child{
+					border: none;
+				}
+				a {
+					display: block;
+					padding: $unit*1.5 0 $unit*1.5 $unit*1;
+					// transition: background-color, border-color 1s ease-out;
+					text-decoration: none;
+					&:hover {
+						background: $c-gradient;
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	/* ========================================================
+	タグクラウド
+	=========================================================*/
+	.box_tagcloud{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		a{
+			@extend %btn;
+			margin: 0 $mg*0.5 $mg*0.5 0;
+			border-color: $c-frostywhite;
+		}
+	}
+	// .box_tagcloud a {
+	// 	@extend %btn;
+	// 	margin-bottom: $unit*0.5;
+	// }
+	// .box_tagcloud a:hover {
+	// 	@extend %btn-hover;
+	// }
+
+
+}

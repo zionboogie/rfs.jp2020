@@ -1,0 +1,156 @@
+//- #########################################################
+
+	ファイル概要：サイト全体の設定ファイル
+
+	#########################################################
+//- =========================================================
+	基本設定
+	=========================================================
+//- 画像の設置場所
+- var image_path = '/common/img'
+//- CSSの設置場所
+- var css_path = '/common/css'
+//- JSの設置場所
+- var js_path = '/common/js'
+//- サイト名
+- var site_name = 'smart'
+//- サイトURL
+- var domain = 'https://rfs.jp/'
+//- コピーライト
+- var copyright = '&copy; rhythmfactory Ltd. All Rights Reserved.'
+- 
+	var CATEGORY_P = {
+		html : {
+			url : '/sb/html',
+			title : 'HTML',
+			title_j : 'HTML講座',
+			sup : 'ホームページの構造を記述する言語',
+			description : 'HTML講座では、ホームページを作成するためのHTMLリファレンスと、コーディングガイドライン、CSSやJavaScriptといった関連技術の紹介、スマートフォン対応などを詳しく説明しています。',
+		},
+		css : {
+			url : '/sb/css',
+			title : 'CSS',
+			title_j : 'CSSブログ',
+			sup : 'ホームページの見栄えを設定',
+			description : 'CSS講座ではCSSガイドラインや、CSSを拡張するSassについて解説します。',
+		},
+		javascript : {
+			url : '/sb/javascript',
+			title : 'JavaScript',
+			title_j : 'JavaScript講座',
+			sup : 'ブラウザ側で動作する言語',
+			description : 'JavaScriptの概要から始まって、フレームワークやオブジェクトなど仕様の隅々まで解説しています。<br>沢山のサンプルコードとテクニック集もご用意、遠慮なくご利用ください。',
+		},
+		sql : {
+			url : '/sb/sql',
+			title : 'SQL',
+			title_j : 'SQL講座',
+			sup : 'データベース専用言語',
+			description : '標準SQLを押さえつつ、MySQLにそのまま使える講座です。書籍化しても、そのまま公開中です！',
+		},
+		perl : {
+			url : '/sb/perl',
+			title : 'Perl',
+			title_j : 'Perl講座',
+			sup : 'テキスト整形が得意なサーバサイドの言語',
+			description : 'Perlの言語リファレンスから応用、スタイルガイドまで広範囲をサポートする講座です。書籍化しても、そのまま公開中です！',
+		},
+		php : {
+			url : '/sb/php',
+			title : 'PHP',
+			title_j : 'PHPブログ',
+			sup : 'ウェブサイトに特化したサーバサイドの言語',
+			description : 'PHPはPerlと同じようにCGIとして動作するスクリプト言語です。PHPを使った際の記録を掲載しています。',
+		},
+		atom : {
+			url : '/sb/atom-github',
+			title : 'Atom',
+			title_j : 'Atom講座',
+			sup : 'オープンソースのプログラミング用エディタ',
+			description : 'AtomはHTMLやCSS、JavaScriptなどのプログラミング言語に対応したエディタです。Atomの設定から、Emmet、スニペットなどを説明しています。',
+		},
+		other : {
+			url : '/sb',
+			title : 'Other',
+			title_j : 'その他の講座',
+			sup : 'プログラミング言語用カテゴリ',
+			description : '',
+		},
+	}
+
+
+
+	var CATEGORY_S = {
+		wordpress : {
+			url : '/sb/wordpress',
+			title : 'WordPress',
+			title_j : 'WordPressブログ',
+			sup : 'ホームページの見栄えを設定',
+			description : 'WordPressは世界で圧倒的なシェアを誇るブログ用のオープンソースソフトウエアです。開発時によく使うコードやプラグインなどを紹介しています。',
+		},
+		apache : {
+			url : '/server/apache',
+			title : 'Apache',
+			title_j : 'Apacheブログ',
+			sup : '20年代もシェアNO1のウェブサーバ',
+			description : 'Apacheのインストールから、ユーザ認証、セキュリティなどの設定を詳しく解説しています。',
+		},
+		mysql : {
+			url : '/server/mysql',
+			title : 'MySQL',
+			title_j : 'MySQL講座',
+			sup : 'シェアNO1のデータベース管理システム',
+			description : 'MySQLでデータベースを構築、運営するためのノウハウを公開中です。',
+		},
+		git : {
+			url : '/server/git',
+			title : 'Git',
+			title_j : 'Gitブログ',
+			sup : 'チーム開発必須のバージョン管理システム',
+			description : 'Gitは開発に必須のバージョン管理システムです。プロの現場ではバージョン管理システムとしてはほぼ1択状態のため、必修の技術といえます。Gitの用語集から、Gitを使った運用方法などを紹介しています。',
+		},
+		cline : {
+			url : '/server/cline',
+			title : 'Command Line',
+			title_j : 'コマンドライン講座',
+			sup : 'サーバサイドエンジニア業務の必修科目',
+			description : '',
+		},
+		aws : {
+			url : '/server/aws',
+			title : 'AWS',
+			title_j : 'AWS講座',
+			sup : '無料から使えるクラウドコンピューティングサービス',
+			description : '',
+		},
+		bind : {
+			url : '/server/bind',
+			title : 'BIND',
+			title_j : 'BIND講座',
+			sup : 'ドメイン管理の基礎',
+			description : 'DNS(Domain Name System)は、インターネットの名前解決サービスです。ネームサーバーで最もポピュラーなBINDの設定方法を紹介しています。',
+		},
+		other : {
+			url : '/server/',
+			title : 'Other',
+			title_j : 'その他の講座',
+			sup : '',
+			description : '',
+		},
+	}
+	var CATEGORY_B = {
+		music : {
+			url : '/blog/music',
+			title : 'Best Music',
+			title_j : 'Best Music',
+			sup : '',
+			description : '',
+		},
+		science : {
+			url : '/blog/science',
+			title : 'Science',
+			title_j : 'Science',
+			sup : '',
+			description : '',
+		},
+	}

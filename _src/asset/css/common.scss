@@ -1,0 +1,579 @@
+@charset "UTF-8";
+
+/*#########################################################
+
+【コーディングガイドライン補足】
+
+▼サポートブラウザ
+確認ブラウザ：
+▼スマートフォン
+確認デバイス：
+▼解像度
+基準モニター解像度（PC）：
+基準モニター解像度（SP）：
+ブレイクポイント：
+
+▼コーディングガイドライン補足
+リンクURL：ルート相対。index.htmlは記入しない
+・外部サイトへのリンクは基本的に新規ウインドウ（_blank）での展開
+・IDはJSのみで使い、スタイルはクラスで指定する
+・ハイフンを使わずアンダーバーを使う
+・フォントはremの62.50%（10px）
+・ページ固有のCSSはページ専用ファイルにまとめる
+・余白はmargin-bottomで設定（余白でmargin-topを使わない）
+・articleの中にsectionを入れる、その逆はNG
+・sectionは必ずH要素を含む、文章と認識しやすいものに限定
+・headerはサイトのヘッダ以外では使わない
+・縦や横の並びはULを使う
+
+▼_base.scssに記述できる設定
+・他のプロジェクトでも使う汎用的な設定
+　→他プロジェクトでも絶対に使うというレベルでなくても良い。
+▼common.scssに記述したほうが良い設定
+・プロジェクトに特化した共有設定
+#########################################################*/
+
+
+
+
+/*#########################################################
+
+読み込み
+
+#########################################################*/
+
+/* ========================================================
+リセット系CSS（どれか1つを選択）
+=========================================================*/
+@import "ress.scss"; // normalize.cssを最近のWeb制作にあうようカスタマイズ
+// 基本設定
+@import "base.scss";
+// ヘッダ・フッタ
+@import "parts.scss";
+// ウェブフォント（普通のインポート）
+@import "fontello/css/_smartfont.scss";	// http://fontello.com/
+
+
+/*#########################################################
+
+共通パーツ
+
+#########################################################*/
+
+// 明朝
+.serif{
+	font-family: 'Playfair Display', "游明朝", YuMincho, serif;
+}
+
+
+/* ========================================================
+スクロールバー
+=========================================================*/
+::-webkit-scrollbar{
+	width: 10px;
+}
+::-webkit-scrollbar-track{
+	// background: #fff;
+	border: none;
+	// box-shadow: inset 0 0 2px #777;
+}
+::-webkit-scrollbar-thumb{
+	background: #ff4e50;
+	background: #000;
+	box-shadow: none;
+}
+
+
+/* ========================================================
+view moreボタン
+=========================================================*/
+.btn_viewmore{
+	margin: auto auto $mg*2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: $unit*16;
+	height: $unit*4;
+	color: #fff;
+	background-color: #222;
+	&:hover{
+		background: #ff4e50;
+	}
+}
+
+
+
+/* ========================================================
+ページトップに戻るボタン
+=========================================================*/
+.btn_backtotop{
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	z-index: 1000;
+	transition: all 1s ease-out;
+	transition: bottom 0.2s ease-out;
+	opacity: 0;
+	@include mq(sm){
+		bottom: 10px;
+		right: 5px;
+	}
+	// スクロール時にJSから付与されるクラス
+	&.fadein{
+		opacity: 1;
+	}
+	// ホバー時の挙動
+	&:hover{
+		opacity: .8;
+		bottom: 34px;
+		@include mq(sm){
+			bottom: 10px;
+		}
+		&::after{
+			box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.2);
+			@include mq(sm){
+				box-shadow: none;
+			}
+		}
+	}
+	&::before{
+		border-color: #fff;
+	}
+	// ボタンのベース
+	&::after{
+		content: "";
+		display: block;
+		color: #fff;
+		text-align: center;
+		width: 60px;
+		height: 60px;
+		padding: 4px;
+		// border-radius: 8px;
+		background-color: #000;
+		transition: all .3s;
+		transform: scale(0.8) rotate(45deg);
+		transition: background-color 0.5s ease-out;
+		@include mq(sm){
+			width: 40px;
+			height: 40px;
+		}
+	}
+	// 矢印マーク
+	.arrow{
+		top: 40px;
+		left: 20px;
+		@include mq(sm){
+			top: 30px;
+			left: 15px;
+		}
+		&::before{
+			width: 20px;
+			height: 20px;
+			z-index: 1;
+			border-color: #fff;
+			@include mq(sm){
+				width: 10px;
+				height: 10px;
+			}
+		}
+	}
+}
+
+/* ========================================================
+SNSボタン
+=========================================================*/
+.social_icons{
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	right: 0;
+	top: 40%;
+	width: 80px;
+	z-index: 10;
+	@include mq(sm){
+		width: 30px;
+		top: initial;
+		bottom: 80px;
+	}
+	>a {
+		display: inline-block;
+		height: $unit*3;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		overflow: hidden;
+		text-decoration: none;
+		&:hover{
+			i:first-child {
+				margin-top: 0;
+				color: $c-accent;
+			}
+		}
+		i {
+			transition: all 0.3s ease;
+			display: block;
+			position: relative;
+			margin-top: 0;
+			height: 100%;
+			line-height: $unit*3.4;
+			width: 100%;
+			text-align: center;
+			font-size: 100%;
+			color: #000;
+			&:first-child {
+				margin-top: -30px;
+			}
+		}
+	}
+}
+
+/* ========================================================
+ラインアニメーション
+=========================================================*/
+a.btn_line_anime,a.btn_line_anime:visited{
+	position: relative;
+	display: inline-block;
+	padding: 0 0 $mg*1 0;
+	color: $c-anchor;
+	text-decoration: none;
+	text-align: left;
+	&:hover {
+		// color: darken($c-anchor, 80%);
+		color: $c-accent;
+		span {
+			&::after {
+				width: 100%;
+			}
+		}
+	}
+	// 線
+	&::after {
+		content: "";
+		position: absolute;
+		display: block;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background-color: $c-font;
+		transition: height 1s, width 1s;
+	}
+	span {
+		transition: color 0.6s;
+		// ロールオーバー時の線
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: 0;
+			width: 0;
+			height: 1px;
+			// background-color: darken($c-anchor, 80%);
+			background-color: $c-accent;
+			transition: width 0.6s;
+			z-index: 1;
+		}
+	}
+}
+
+
+/* ========================================================
+トピックパス
+=========================================================*/
+.breadcrumbs{
+	display: flex;
+	list-style: none;
+	margin: $mg*15 auto $mg*5;
+	@extend %w-content;
+	width: 100%;
+	// flex-grow/flex-shrink/flex-basis
+	flex: 2 0 auto;
+	@include mq(sm){
+		margin: 90px auto 20px;
+	}
+	li{
+		margin-right: $mg;
+		a{
+			font-size: $unit*1.4;
+			text-decoration: none;
+			color: #a4a4a4;
+			&:before{
+				content: "/";
+				margin-right: $mg*0.5;
+			}
+		}
+	}
+}
+
+/* ========================================================
+SNSボタン
+=========================================================*/
+.social_icons{
+
+}
+
+/* ========================================================
+お問い合わせ
+=========================================================*/
+.area_company_pr{
+	margin: 0 auto $mg*10;
+	width: 80%;
+	background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 10px 3px;
+	h3{
+		margin-bottom: $unit;
+		font-size: $unit*1.5;
+		letter-spacing: 0.1*$unit;
+	}
+	.button {
+		border: none;
+		background-color: #fff;
+		color: #333;
+		&.active {
+			background-color: #fb7777;
+			border-color: #333;
+			color: #fff;
+		}
+		&::before,
+		&::after {
+			background-color: #fff;
+		}
+	}
+	a {
+		display: block;
+		margin: $unit*2 auto;
+		padding: $unit*5 $unit*2;
+		// font-weight: bold;
+		text-align: center;
+		width: 100%;
+		line-height: 2;
+		text-decoration: none;
+	}
+	.btn_circle{
+		margin: $unit*2 auto 0 auto;
+		width: 200px;
+		height: 60px;
+		line-height: 60px;
+		border: 1px solid $c-line;
+		text-align: center;
+		z-index: 1000;
+		transition: all .3s;
+
+		&:hover{
+			.arrow_o_right:before{
+				border-color: #fff;
+			}
+		}
+	}
+}
+.button {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	position: relative;
+	z-index: 2;
+	border: .1rem solid #efefef;
+	transition: all .2s;
+	&::before,
+	&::after {
+		position: absolute;
+		z-index: -1;
+		display: block;
+		content: '';
+		top: 0;
+		width: 50%;
+		height: 100%;
+		transition: all .2s;
+	}
+	&::before {
+		right: 0;
+	}
+	&::after {
+		left: 0;
+	}
+	&.active{
+		background-color: #fff;
+		border-color: #333;
+		color: #333;
+		text-decoration: none;
+		&::before,
+		&::after {
+			width: 0;
+			background-color: #333;
+		}
+	}
+}
+
+
+// @media screen and (min-width: 770px)
+// #after-list-contents .after-contents-inner .section-collection .collection-slider .item .new {
+//     left: 10px;
+// }
+
+.new {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: -10px;
+	left: 10px;
+	text-align: center;
+	&:before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 10px;
+		background: darken($c-accent, 25%);
+		left: 0;
+		top: 0;
+		transform: skewX(22deg);
+		transform-origin: 0 0;
+		z-index: 1;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: $c-accent;
+		z-index: 2;
+	}
+	span{
+		position: relative;
+		line-height: 40px;
+		font-size: 12px;
+		letter-spacing: .05em;
+		color: #fff;
+		z-index: 3;
+	}
+}
+
+
+/*#########################################################
+
+アニメーション
+
+#########################################################*/
+@keyframes fade{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+/* ========================================================
+画像の遅延読み込み用
+=========================================================*/
+.lazyloaded{
+	opacity: 1;
+}
+
+
+
+/*#########################################################
+
+基本レイアウト
+
+#########################################################*/
+
+.container{
+}
+
+
+
+
+/* ========================================================
+最新の投稿一覧
+=========================================================*/
+.are_post_list{
+	margin-bottom: $mg*10;
+	background: #dad5c9;
+	padding: $mg*4 0;
+	@include mq(sm){
+		padding: $mg*4 0;
+	}
+	>.inner{
+		margin: auto;
+		padding: $mg*10 0 $mg*5;
+		@extend %w-content;
+		h2{
+			margin-bottom: $mg*3;
+			text-align: center;
+		}
+		.post_list{
+			display: flex;
+			justify-content: space-between;
+			list-style: none;
+			@include mq(sm){
+				flex-direction: column;
+			}
+			> li{
+				margin-right: $mg*2;
+				@include mq(sm){
+					margin-right: 0;
+					margin-bottom: $mg*4;
+				}
+				&:last-child{
+					margin-right: 0;
+				}
+				.li_img{
+					a{
+						position: relative;
+						// 画像のホバー処理
+						&:hover{
+							opacity: 1;
+							&:after {
+								opacity: 1;
+							}
+						}
+						// 画像のホバー処理
+						&:after {
+							content: "";
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							background-color: rgba(0,0,0,0.1);
+							opacity: 0;
+							transition: ease opacity 350ms;
+						}
+						img{
+							width: 100%;
+							animation: fade 5s forwards;
+							animation-delay: 1000ms;
+							opacity: 0;
+							@include mq(sm){
+								margin-bottom: $mg;
+							}
+						}
+					}
+				}
+				ul{
+					display: flex;
+					list-style: none;
+					@include mq(sm){
+						margin: auto;
+						width: 90%;
+					}
+					a{
+						margin-right: $mg;
+						text-decoration: none;
+						border-bottom: 1px solid #cdb897;
+					}
+				}
+				h3{
+					@include mq(sm){
+						margin: auto;
+						width: 90%;
+					}
+				}
+				a{
+					// position: relative;
+					text-decoration: none;
+					display: block;
+				}
+			}
+		}
+	}
+
+}

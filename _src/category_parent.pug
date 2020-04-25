@@ -1,0 +1,195 @@
+//- #########################################################
+
+	ファイル概要：テンプレートファイル
+
+	#########################################################
+
+//- サイト共通レイアウトファイルを継承
+extends _layout.pug
+
+//- _layout.pugのvarsを再定義
+block vars
+	//- サイト全体の設定ファイルの読み込み
+	include _config.pug
+	//- ページ用変数を設定
+	- 
+		//- ページID
+		var id = "top"
+		//- ページ設定
+		var page = {
+			url : 'category_parent.html',
+			title : '',
+			description : '',
+			keywords : '',
+			image : image_path + '/ogp.jpg'
+		}
+		//- CSSファイル名
+		var cssfile = 'category_parent.css'
+		//- JSファイル名
+		var jsfile = 'category_parent-dist.js'	
+
+//- _layout.pugのcontentsを再定義
+block contents
+	main.container
+		//- article:独立した記事
+		article.area_hook.swiper-container
+			div.inner.swiper-wrapper
+				.swiper-slide.mv01
+					.swper-content
+						h2.h_anime
+							span Front End
+							span Web Developer 
+						div.split
+						h3 フロントエンドのウェブ制作を学ぶ
+						p.serif 
+							span HTML5やCSS３、JavaScriptなどの言語、それにAtomといったツール、
+							br
+							span 言語を覚えるための勉強方法などを紹介。
+					img(data-src="/common/img/top/bg1.jpg").swiper-lazy
+					.swiper-lazy-preloader
+				.swiper-slide.mv02
+					.swper-content
+						h2.h_anime 
+							span Back End
+							span Web Developer 
+						div.split
+						h3 フロントエンドのウェブ制作を学ぶ
+						p.serif 
+							span PerlやPHP、SQLといったサーバサイドの言語や、コマンドライン、WordPress、
+							br
+							span AWS、MySQL、Apacheなどサーバソフトウエアの設定方法などを紹介。
+					img(data-src="/common/img/top/bg2.jpg").swiper-lazy
+					.swiper-lazy-preloader
+			.swiper-pagination
+
+		a(href="#section01").btn_scroll
+			span
+			|explore
+
+
+		//- 記事一覧
+		article.area_articles_list
+			.inner#section01
+				h2 Programming Language
+				h3 プログラミング言語と関連技術、ツール
+
+			article.swiper-container2
+				div.swiper-wrapper
+					//- プログラム講座の出力
+					each item in CATEGORY_P
+						section.swiper-slide
+							a(href=item.url title=item.title_j).post_item
+								.inner.js_fix
+									h4 #{item.title} -
+										span #{item.sup}
+									p !{item.description}
+								div.btn_viewmore VIEW MORE
+
+				.swiper-button-next2
+				.swiper-button-prev2
+				.swiper-pagination2
+
+
+		aside.box_ad
+			//- smart自動サイズ
+			.
+				<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9885420769768716" data-ad-slot="1836972888" data-ad-format="auto" data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+		//- 記事一覧
+		article.area_articles_list
+			.inner
+				h2 Server Side
+				h3 サーバ関連の構築・設定
+
+			article.swiper-container3
+				div.swiper-wrapper
+					//- サーバ講座の出力
+					each item in CATEGORY_S
+						section.swiper-slide
+							a(href=item.url title=item.title_j).post_item
+								.inner.js_fix
+									h4 #{item.title} -#{item.sup}
+									p !{item.description}
+								div.btn_viewmore VIEW MORE
+
+				.swiper-button-next3
+				.swiper-button-prev3
+				.swiper-pagination3
+
+		//- モーダル
+		article.modal.js_modal_music
+			div.outer
+				button().btn.btn_close.js_close_modal_music 閉じる
+				div.js_modal_youtube
+
+
+		//- 最新の記事一覧
+		div.are_post_list
+			.inner
+				h2 Latest Posts
+				ul.post_list
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post1
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post2
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post3
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post4
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+					li
+						figure.li_img
+							a(href="")
+								img(src="/common/img/common/dummy.jpg").lazy.post5
+						ul
+							li
+								a(href="") JavaScript
+							li
+								a(href="") HTML
+						h3.c-item__title
+							a(href="") Atomの高速化
+						//- p In praise of being in-between.
+
