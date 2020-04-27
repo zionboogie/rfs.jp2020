@@ -48,6 +48,10 @@ $c-lightgray: #959595;
 
 body{
 	background: url(/common/img/single/bg.jpg) no-repeat #fff;
+	@include mq(sm){
+		background-image: url(/common/img/single/bg_sp.jpg);
+		background-size: cover;
+	}
 }
 
 .site_header{
@@ -187,6 +191,7 @@ background: #fff;
 		font-weight: bold;
 		letter-spacing: 0.064em;
 		color: $c-frostywhite;
+		opacity: 0.6;
 		@include mq(sm){
 			font-size: $unit*6;
 			color: $c-darkgray;

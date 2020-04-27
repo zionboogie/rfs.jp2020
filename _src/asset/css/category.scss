@@ -160,45 +160,6 @@ SNSボタン
 		a.btn_line_anime{
 			top: 20px;
 		}
-		.visual_meta{
-			position: absolute;
-			top: 30px;
-			right: 15%;
-			max-width: 650px;
-			color: #dcdcdc;
-			@include mq(sm){
-				position: relative;
-				top: 0;
-				right: auto;
-			}
-			h1{
-				font-size: $unit*13;
-				color: #fff;
-				opacity: 0;
-				animation: slidebox 0.4s ease-out 1s 1 forwards;
-				@include mq(sm){
-					margin-bottom: $mg*4;
-					font-size: $unit*10;
-					line-height: 1;
-				}
-			}
-			p{
-				display: inline;
-				margin-bottom: $mg*3;
-				background: $c-font;
-			}
-			.btn_viewmore{
-				margin: $mg*3 0;
-			}
-			.arrow_right{
-				&:before{
-					border-color: #fff;
-				}
-				&:after{
-					border-color: #fff;
-				}
-			}
-		}
 	}
 }
 // .background_image_zoom{

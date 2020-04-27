@@ -57,44 +57,9 @@ $fill: #434343;
 スライダ
 =========================================================*/
 .area_hook {
-	height: calc(100vh - #{$h-header});
-	@include mq(sm){
-		height: calc(100vh - #{$h-s-header});
-	}
-
-	&.swiper-container {}
-	> .inner {
-		margin: 0 auto;
-
-		&.swiper-wrapper {}
-
-		.swiper-slide {
-			position: relative;
-			opacity: 0;
-			transition: opacity 1.5s ease-out;
-			width: 100% !important;
-			&.active{
-				opacity: 1;
-			}
-			.swper-content {
-				position: relative;
-				margin: auto;
-				// width: $w-content;
-				width: 90%;
-				height: 100%;
-				z-index: 2;
-			}
-		}
-		.swiper-lazy{
-			position: absolute;
-			top: 0;
-			z-index: 1;
-			@include mq(sm){
-				width: 100%;
-			}
-
-		}
+	> .swiper-wrapper {
 		.mv01, .mv02{
+			width: 100% !important;
 			h2 {
 				margin: $mg*5 0 $mg*6;
 				font-size: $unit*12;

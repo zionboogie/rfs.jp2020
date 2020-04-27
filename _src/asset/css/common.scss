@@ -237,7 +237,6 @@ a.btn_line_anime,a.btn_line_anime:visited{
 	text-decoration: none;
 	text-align: left;
 	&:hover {
-		// color: darken($c-anchor, 80%);
 		color: $c-accent;
 		span {
 			&::after {
@@ -253,9 +252,8 @@ a.btn_line_anime,a.btn_line_anime:visited{
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		height: 1px;
+		height: 3px;
 		background-color: $c-font;
-		transition: height 1s, width 1s;
 	}
 	span {
 		transition: color 0.6s;
@@ -266,10 +264,10 @@ a.btn_line_anime,a.btn_line_anime:visited{
 			position: absolute;
 			bottom: 0;
 			width: 0;
-			height: 1px;
+			height: 3px;
 			// background-color: darken($c-anchor, 80%);
 			background-color: $c-accent;
-			transition: width 0.6s;
+			transition: width 0.4s ease-out;
 			z-index: 1;
 		}
 	}
@@ -448,6 +446,94 @@ SNSボタン
 		z-index: 3;
 	}
 }
+
+
+
+/* ========================================================
+スライダ
+=========================================================*/
+.area_hook {
+	height: calc(100vh - #{$h-header});
+	@include mq(sm){
+		height: calc(100vh - #{$h-s-header});
+	}
+
+	&.swiper-container {}
+	> .swiper-wrapper {
+		margin: 0 auto;
+
+		.swiper-slide {
+			position: relative;
+			opacity: 0;
+			transition: opacity 1.5s ease-out;
+
+			&.active{
+				opacity: 1;
+			}
+			.swper-content {
+				position: relative;
+				margin: auto;
+				// width: $w-content;
+				width: 90%;
+				height: 100%;
+				z-index: 2;
+			}
+		}
+		.swiper-lazy{
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			@include mq(sm){
+				width: 100%;
+			}
+
+		}
+	}
+}
+
+/* ========================================================
+category/category_parentで使われるヒーローエリアのタイトル
+=========================================================*/
+.visual_meta{
+	position: absolute;
+	top: 30px;
+	right: 15%;
+	max-width: 650px;
+	color: #dcdcdc;
+	@include mq(sm){
+		position: relative;
+		top: 0;
+		right: auto;
+	}
+	h1{
+		font-size: $unit*13;
+		color: #fff;
+		opacity: 0;
+		animation: slidebox 0.4s ease-out 1s 1 forwards;
+		@include mq(sm){
+			margin-bottom: $mg*4;
+			font-size: $unit*10;
+			line-height: 1;
+		}
+	}
+	p{
+		display: inline;
+		margin-bottom: $mg*3;
+		background: $c-font;
+	}
+	.btn_viewmore{
+		margin: $mg*3 0;
+	}
+	.arrow_right{
+		&:before{
+			border-color: #fff;
+		}
+		&:after{
+			border-color: #fff;
+		}
+	}
+}
+
 
 
 /*#########################################################
