@@ -31,9 +31,10 @@ block vars
 //- _layout.pugのcontentsを再定義
 block contents
 	main.container
-		//- article:独立した記事
+		//- article:スライダー
 		article.area_hook.swiper-container
 			div.inner.swiper-wrapper
+				//- スライダー１
 				.swiper-slide.mv01
 					.swper-content
 						h2.h_anime
@@ -47,6 +48,7 @@ block contents
 							span 言語を覚えるための勉強方法などを紹介。
 					img(data-src="/common/img/top/bg1.jpg").swiper-lazy
 					.swiper-lazy-preloader
+				//- スライダー2
 				.swiper-slide.mv02
 					.swper-content
 						h2.h_anime 
@@ -62,6 +64,7 @@ block contents
 					.swiper-lazy-preloader
 			.swiper-pagination
 
+		//- スクロールボタン
 		a(href="#section01").btn_scroll
 			span
 			|explore
