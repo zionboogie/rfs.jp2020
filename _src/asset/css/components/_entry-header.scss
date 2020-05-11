@@ -1,0 +1,86 @@
+
+
+/* ========================================================
+記事ヘッダ
+=========================================================*/
+.entry-header {
+	// pointer-events: none;
+	text-align: center;
+	z-index: 1;
+	width: 100%;
+	@include mq(sm){
+		height: auto;
+	}
+	>.categorytitle{
+		font-size: $unit*12;
+		font-weight: bold;
+		letter-spacing: 0.064em;
+		color: $c-frostywhite;
+		opacity: 0.6;
+		@include mq(sm){
+			font-size: $unit*6;
+			color: $c-darkgray;
+		}
+	}
+	/* ========================================================
+	アニメーションタイトル
+	=========================================================*/
+	>.entrytitle {
+		margin-bottom: $mg*5;
+		font-weight: normal;
+		line-height: 1.4;
+		text-align: center;
+		font-size: $unit*4;
+		// text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+		width: 100%;
+		@include mq(sm){
+			padding-bottom: $unit*2;
+		}
+		.--js-entrytitle{
+			.--js-charanime {
+				display: inline-block;
+				line-height: 1em;
+			}
+		}
+	}
+
+}
+.entrymeta-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: $mg*8;
+	width: 100%;
+	flex: 3 0 auto;
+	@include mq(sm){
+		flex-direction: column;
+		margin-bottom: $mg*3;
+	}
+	.podate{
+		margin-right: $mg*3;
+		@include mq(sm){
+			margin-bottom: $mg*2;
+		}
+	}
+	.relatedlink-list{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		.pocategory{
+			margin-right: $mg;
+		}
+		a{
+			display: block;
+			margin-right: $mg;
+			padding: 0 $mg*1;
+			background: #000;
+			color: #fff;
+			text-decoration: none;
+			transition: background 0.3s ease-out;
+			&:hover{
+				background: $c-accent;
+			}
+		}
+	}
+}
+

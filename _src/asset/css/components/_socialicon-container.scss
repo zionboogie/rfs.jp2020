@@ -1,0 +1,113 @@
+/* ========================================================
+SNSボタン
+=========================================================*/
+.socialicon-contaier{
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	right: 0;
+	top: 40%;
+	width: 80px;
+	z-index: 10;
+	@include mq(sm){
+		width: 30px;
+		top: initial;
+		bottom: 80px;
+	}
+	>a {
+		display: inline-block;
+		height: $unit*3;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		overflow: hidden;
+		text-decoration: none;
+		&:hover{
+			i:first-child {
+				margin-top: 0;
+				color: $c-accent;
+			}
+		}
+		i {
+			transition: all 0.3s ease;
+			display: block;
+			position: relative;
+			margin-top: 0;
+			height: 100%;
+			line-height: $unit*3.4;
+			width: 100%;
+			text-align: center;
+			font-size: 100%;
+			color: #000;
+			&:first-child {
+				margin-top: -30px;
+			}
+		}
+	}
+}
+
+
+
+
+/* ========================================================
+ソーシャルボタン
+=========================================================*/
+.social_icons_content {
+	width: 100%;
+	margin-bottom: $unit*2;
+	display: flex;
+	justify-content: space-between;
+	padding: $unit*1 0;
+	>a {
+		display: block;
+		width: 23%;
+		height: $mg*5;
+		border-radius: 2px;
+		background: #000;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		overflow: hidden;
+		text-decoration: none;
+		&:hover{
+			background: #ccc;
+			i:first-child {
+				margin-top: 11px;
+			}
+		}
+		i {
+			transition: all 0.3s ease;
+			display: block;
+			position: relative;
+			margin-top: 11px;
+			height: 100%;
+			width: 100%;
+			text-align: center;
+			font-size: 100%;
+			color: #fff;
+			&:first-child {
+				margin-top: -50px;
+			}
+		}
+	}
+	.btn_facebook:hover {
+		background: #3b5997 !important;
+	}
+	.btn_twitter:hover {
+		background: #00acee !important;
+	}
+	.btn_pocket:hover {
+		background: #dd4b39 !important;
+	}
+	.btn_hatebo:hover {
+		background: #00A5DE !important;
+	}
+
+	.btn_linkedin:hover {
+		background: #0e76a8 !important;
+	}
+	.btn_instagram:hover {
+		background: #3f729b !important;
+	}
+	.btn_tumblr:hover {
+		background: #36465d !important;
+	}
+}

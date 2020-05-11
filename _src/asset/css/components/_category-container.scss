@@ -1,0 +1,53 @@
+
+/* ========================================================
+top:カテゴリ一覧
+=========================================================*/
+.category-container{
+	margin-bottom: $mg*5;
+	>.inner{
+		@extend %w-content;
+		h2{
+			margin-bottom: $mg*5;
+			font-size: $unit*3;
+			line-height: 1;
+			color: #fde3c5;
+			span{
+				font-size: $unit*1.8;
+				color: #848488;
+			}
+		}
+	}
+}
+
+/* ========================================================
+横並び一覧（オーバーライド）
+=========================================================*/
+.horizontal-list{
+	&.-category{
+		> li{
+			width: 25%;
+			padding-right: 20px;
+			&:last-child{
+				margin-right: 0;
+			}
+			> a{
+				color: #fff;
+				>.title{
+					margin-bottom: $mg*2;
+					line-height: 1.2;
+					font-size: $unit*2.5;
+					span{
+						font-size: $unit*1.8;
+						color: #848488;
+					}
+				}
+				> p{
+					display: inline;
+					background-color: #a70655;
+				}
+			}
+		}
+
+	}
+}
+

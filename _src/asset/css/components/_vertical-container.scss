@@ -1,0 +1,13 @@
+/* ========================================================
+横並びレイアウト
+=========================================================*/
+ul.horizontal-container{
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+	@include mq(sm){
+		flex-direction: column;
+		width: 95%;
+		margin: auto;
+	}
+}

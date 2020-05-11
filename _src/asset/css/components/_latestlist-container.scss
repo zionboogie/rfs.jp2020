@@ -1,0 +1,39 @@
+
+/* ========================================================
+category.pug:最新記事一覧
+=========================================================*/
+.latestlist-container{
+	background: initial;
+	padding-top: 0;
+	margin: auto auto $mg*10;
+	@extend %w-content;
+
+	a{
+		display: block;
+		text-decoration: none;
+		line-height: $unit*3;
+		opacity: 1;
+		border-radius: $unit*3;
+		&:hover{
+			color: #fff;
+			background: $c-gradient;
+		}
+	}
+	> .inner{
+		// h2 {
+		// 	margin-bottom: $unit*5;
+		// 	padding: $unit*.8 0;
+		// 	display: inline-block;
+		// 	border-bottom: 1px solid;
+		// 	color: #fff;
+		// }
+		// h2 a{
+		// 	text-decoration: none;
+		// 	letter-spacing: 0.15*$unit;
+		// }
+		.title{
+			margin-bottom: $mg*2;
+		}
+	}
+
+}

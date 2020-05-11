@@ -1,0 +1,102 @@
+
+/* ========================================================
+お問い合わせ
+=========================================================*/
+.companypr-container{
+	margin: 0 auto $mg*10;
+	width: 80%;
+	background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 10px 3px;
+	h3{
+		margin-bottom: $unit;
+		font-size: $unit*1.5;
+		letter-spacing: 0.1*$unit;
+	}
+	/* ========================================================
+	スライドアニメーションのバナー領域
+	=========================================================*/
+	>.banner-container {
+		border: none;
+		background-color: #fff;
+		color: #333;
+		&.active {
+			background-color: #fb7777;
+			border-color: #333;
+			color: #fff;
+		}
+		&::before,
+		&::after {
+			background-color: #fff;
+		}
+	}
+	>a {
+		display: block;
+		margin: $unit*2 auto;
+		padding: $unit*5 $unit*2;
+		// font-weight: bold;
+		text-align: center;
+		width: 100%;
+		line-height: 2;
+		text-decoration: none;
+	}
+	// ボタン
+	.-link-contact{
+		margin: $unit*2 auto 0 auto;
+		width: 200px;
+		height: 60px;
+		line-height: 60px;
+		border: 1px solid $c-line;
+		z-index: 1000;
+		transition: all .3s;
+		background-color: initial;
+
+		&:hover{
+			.-openright:before{
+				border-color: #fff;
+			}
+		}
+	}
+}
+
+
+/* ========================================================
+アニメーション用クラス（グローバル）
+=========================================================*/
+.-slidebutton {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	position: relative;
+	z-index: 2;
+	border: .1rem solid #efefef;
+	transition: all .2s;
+	&::before,
+	&::after {
+		position: absolute;
+		z-index: -1;
+		display: block;
+		content: '';
+		top: 0;
+		width: 50%;
+		height: 100%;
+		transition: all .2s;
+	}
+	&::before {
+		right: 0;
+	}
+	&::after {
+		left: 0;
+	}
+	&.active{
+		background-color: #fff;
+		border-color: #333;
+		color: #333;
+		text-decoration: none;
+		&::before,
+		&::after {
+			width: 0;
+			background-color: #333;
+		}
+	}
+}

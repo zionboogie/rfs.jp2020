@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+/* ========================================================
+top:記事一覧
+=========================================================*/
+.articlelist-container {
+	padding-bottom: $mg*10;
+
+	> .inner {
+		margin: 0 auto;
+		max-width: $w-content;
+		text-align: center;
+		.title {
+			margin: auto auto $mg*5;
+			padding: $mg*8 $mg*4 $mg*5;
+			text-align: center;
+			display: block;
+			background: url(/common/img/common/h_line.svg) no-repeat center bottom;
+			background-size: 500px;
+		}
+		.subtitle{
+			margin-bottom: $mg*4;
+			font-weight: bold;
+		}
+	}
+}

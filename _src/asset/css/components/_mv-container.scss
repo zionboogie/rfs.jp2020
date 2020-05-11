@@ -1,0 +1,21 @@
+/* ========================================================
+ページヘッダ
+=========================================================*/
+.mv-container{
+	padding-top: 50px;
+	height: 600px;
+	@extend %w-content;
+	@include mq(sm){
+		height: 100vh;
+	}
+	>.inner{
+		position: relative;
+		margin-left: 180px;
+		@include mq(sm){
+			margin-left: 0;
+		}
+		>a.lineanime-button{
+			top: 20px;
+		}
+	}
+}

@@ -1,0 +1,96 @@
+/* ========================================================
+最新の投稿一覧
+=========================================================*/
+.postlist-container{
+	margin-bottom: $mg*10;
+	background: #dad5c9;
+	padding: $mg*4 0;
+	@include mq(sm){
+		padding: $mg*4 0;
+	}
+	>.inner{
+		margin: auto;
+		padding: $mg*10 0 $mg*5;
+		@extend %w-content;
+		>.title{
+			margin-bottom: $mg*3;
+			text-align: center;
+		}
+		.post-list{
+			display: flex;
+			justify-content: space-between;
+			list-style: none;
+			@include mq(sm){
+				flex-direction: column;
+			}
+			> li{
+				margin-right: $mg*2;
+				@include mq(sm){
+					margin-right: 0;
+					margin-bottom: $mg*4;
+				}
+				&:last-child{
+					margin-right: 0;
+				}
+				.post-img{
+					a{
+						position: relative;
+						// 画像のホバー処理
+						&:hover{
+							opacity: 1;
+							&:after {
+								opacity: 1;
+							}
+						}
+						// 画像のホバー処理
+						&:after {
+							content: "";
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							background-color: rgba(0,0,0,0.1);
+							opacity: 0;
+							transition: ease opacity 350ms;
+						}
+						img{
+							width: 100%;
+							animation: fade 5s forwards;
+							animation-delay: 1000ms;
+							opacity: 0;
+							@include mq(sm){
+								margin-bottom: $mg;
+							}
+						}
+					}
+				}
+				ul{
+					display: flex;
+					list-style: none;
+					@include mq(sm){
+						margin: auto;
+						width: 90%;
+					}
+					a{
+						margin-right: $mg;
+						text-decoration: none;
+						border-bottom: 1px solid #cdb897;
+					}
+				}
+				.title{
+					@include mq(sm){
+						margin: auto;
+						width: 90%;
+					}
+				}
+				a{
+					// position: relative;
+					text-decoration: none;
+					display: block;
+				}
+			}
+		}
+	}
+
+}

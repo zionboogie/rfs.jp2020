@@ -1,0 +1,241 @@
+@charset "UTF-8";
+
+
+/* ========================================================
+専用変数
+=========================================================*/
+$h-header: 150px;
+$h-s-header: 60px;
+$w-bp-header: 1200px; // ヘッダのみのブレイクポイント
+
+$logo-line: #aedadd;
+$logo-fill: #434343;
+
+
+/* ========================================================
+専用アニメーション
+=========================================================*/
+// サイトメニュー用
+@keyframes slidebox{
+	0% {
+		transform: translate(60px,0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0,0);
+	}
+}
+// ロゴ用
+@keyframes logo {
+	0%{
+		fill: transparent;	//塗りつぶし
+	}
+	50%{
+		fill: transparent;
+	}
+	95%{
+		stroke-opacity: 1;	//塗りつぶし
+	}
+	100%{
+		stroke-dashoffset: 0;
+		fill: $logo-fill;
+		stroke-opacity: 0;
+	}
+}
+
+/*#########################################################
+
+ヘッダ
+
+#########################################################*/
+.site-header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: $mg*4 $mg*2;
+	width: 100%;
+	height: $h-header;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	opacity: 0.8;
+	z-index: 100;
+	transition: height,background-color 0.3s;
+	@media screen and (max-width: $w-bp-header){
+		padding: 0;
+		height: $h-s-header;
+	}
+	@include mq(sm){
+		padding: 0;
+	}
+	// ロゴ
+	.sitelogo{
+		line-height: 1;
+		flex-grow: 0;
+		text-align: left;
+		width: 220px;
+		@include mq(sm){
+			flex-grow: 0 !important;
+		}
+		>a{
+			display: block;
+			transition: all 0.3s ease-out;
+			height: 40px;
+			@include mq(sm){
+				height: 30px;
+			}
+			// サイトロゴSVG
+			>.logosvg{
+				margin: 0 40px;
+				height: 100%;
+				@include mq(sm){
+					margin: 0 20px;
+				}
+			}
+		}
+	}
+
+	/* ========================================================
+	ナビゲーション
+	=========================================================*/
+	.site-nav{
+		flex-grow: 2;
+		>ul{
+			display: flex;
+			list-style: none;
+			@media screen and (max-width: $w-bp-header){
+				display: none;
+			}
+			// 要素の数だけアニメーション
+			@for $no from 1 through 8 {
+				li:nth-child(#{$no}) {
+					animation: slidebox 0.4s ease-out $no*0.1+2+s 1 forwards;
+				}
+			}
+			>li{
+				// margin: 0 $mg*1;
+				line-height: 2;
+				opacity: 0;
+				>a{
+					position: relative;
+					display: inline-block;
+					padding: 0 $mg*2 0 0;
+					text-decoration: none;
+					white-space: nowrap;
+					&:hover{
+						color: $c-accent;
+						opacity: 1;
+						span.hash{
+							color: #000;
+						}
+						// ロールオーバー時の線
+						span.title {
+							&::after {
+								opacity: 1;
+								width: 100%;
+							}
+						}
+					}
+					span.hash{
+						color: $c-accent;
+					}
+					span.title {
+						transition: color 0.6s;
+						// ロールオーバー時の線
+						&::after {
+							opacity: 0;
+							content: "";
+							display: block;
+							position: absolute;
+							bottom: 0;
+							width: 0;
+							height: 1px;
+							// background-color: darken($c-anchor, 80%);
+							background-color: $c-accent;
+							transition: width 0.6s;
+							z-index: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* ========================================================
+	検索フォーム
+	=========================================================*/
+	.search-form{
+		flex-grow: 0;
+		width: 200px;
+		// 検索用テキストボックス
+		@include mq(sm){
+			display: none;
+		}
+		.field{
+			border-bottom: 1px solid $c-line;
+			font-size: $unit*1.4;
+			height: 40px;
+			width: 150px;
+			outline: none;
+			// フォーカスでテキストボックスが伸びる
+			transition: 0.3s ease-in-out;
+			&:focus {
+				// width: 250px;
+				border-bottom: 1px solid $c-accent;
+			}
+			&::placeholder{
+				color: #b5b5b5;
+			}
+		}
+		// 送信ボタン
+		.submit-button{
+			outline: none;
+			transition: all 0.5s ease-out;
+			&:hover{
+				color: $c-accent;
+			}
+		}
+	}
+}
+
+
+/* ========================================================
+ヘッダのミニサイズ
+=========================================================*/
+.site-header{
+	&.is-small {
+		padding: 0;
+		height: $h-s-header;
+		// サイトロゴ
+		>.sitelogo{
+			flex-grow: 2;
+			width: auto;
+			a{
+				height: 30px;
+				.logosvg{
+				}
+			}
+		}
+		// ナビゲーション
+		>.site-nav{
+			display: none;
+		}
+	}
+}
+
+
+/* ========================================================
+ロゴのCSSアニメーション用
+=========================================================*/
+// サイトロゴ
+.logosvg{
+	>.logopath{
+		stroke: $logo-line;	//線の色
+		stroke-dasharray: 1000;	//線の間隔
+		stroke-dashoffset: 1000;	//点線の開始位置
+		stroke-width: 0.5;	//線の太さ
+		animation: logo 3s ease-in 0s;
+	}
+}
+

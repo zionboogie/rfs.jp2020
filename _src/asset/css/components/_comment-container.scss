@@ -1,0 +1,93 @@
+/* ========================================================
+コメント
+=========================================================*/
+.comment-container {
+	margin-top: $unit*4;
+	@include mq(sm){
+		input{
+			width: 100%;
+		}
+	}
+	// タイトル
+	.title {
+		margin-bottom: $mg*2;
+		border-top: 1px solid $c-frostywhite;
+		border-bottom: 1px solid $c-frostywhite;
+		line-height: 2;
+	}
+	ol.comment_list {
+		list-style: none;
+		line-height: 1.8;
+		li {
+			margin-bottom: $mg*2;
+			padding-bottom: $unit*1;
+			border-bottom: 1px solid $c-frostywhite;
+		}
+	}
+	.comment_meta{
+		margin-bottom: $mg*2;
+		// コメントの著者
+		.comment_author {
+			color: $c-lightgray;
+			// ～より
+			.says {
+				display: none;
+			}
+			// 画像
+			.avatar {
+				margin-right: $unit*1;
+				border-radius: 50%;
+				float: left;
+				vertical-align: middle;
+			}
+		}
+		// 日付など
+		.comment_metadata {
+			font-size: $unit*1.4;
+			a {
+				color: $c-lightgray;
+			}
+			.edit_link {
+				margin-left: $unit*1;
+			}
+		}
+	}
+	.reply a {
+		@extend %btn;
+		&:hover {
+			@extend %btn-hover;
+		}
+	}
+}
+
+
+
+/* ========================================================
+コメントを残す
+=========================================================*/
+.commentrespond-container{
+	.title {
+		display: none;
+	}
+	.comment-textarea{
+		textarea {
+			width: 100%;
+		}
+	}
+	.submit{
+		width: 100%;
+		height: $unit*8;
+		background-color: $c-darkgray;
+		border: 1px solid $c-darkgray;
+		color: #fff;
+		transition: border-color,background-color 0.3s ease-out;
+		&:hover{
+			border-color: $c-accent;
+			background: $c-accent;
+		}
+	}
+	label{
+		display: inline-block;
+	}
+}
+

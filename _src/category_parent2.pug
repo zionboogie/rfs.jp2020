@@ -1,0 +1,134 @@
+//- #########################################################
+
+	ファイル概要：テンプレートファイル
+
+	#########################################################
+
+//- サイト共通レイアウトファイルを継承
+extends _layout.pug
+
+//- _layout.pugのvarsを再定義
+block vars
+	//- サイト全体の設定ファイルの読み込み
+	include _config.pug
+	//- ページ用変数を設定
+	- 
+		//- ページID
+		var id = "category_parent2"
+		//- ページ設定
+		var page = {
+			url : 'category_parent2.html',
+			title : '',
+			description : '',
+			keywords : '',
+			image : image_path + '/ogp.jpg'
+		}
+		//- CSSファイル名
+		var cssfile = 'category_parent2.css'
+		//- JSファイル名
+		var jsfile = 'category_parent2-dist.js'	
+
+//- _layout.pugのcontentsを再定義
+block contents
+	main.container
+		//- PICKUP
+		.area_pickup(data-sticky-container)
+			.read
+				//- プログラム講座の出力
+				each item in CATEGORY_P
+					a(href=item.url title=item.title_j).post_item
+						h2 #{item.title} -
+							span #{item.sup}
+						p !{item.description}
+
+
+			.visual_bg(data-sticky)
+				//-  data-margin-top="-40"
+				//- .img(data-sticky)
+				//- img(src="/common/img/parent/bg2.jpg")
+				
+
+		//- article:独立した記事
+		article.swiper-card.swiper-container
+			div.swiper-wrapper
+				.swiper-slide
+					//- figure.photo
+					//- 	img(src="/common/img/category/bk/p03.jpg").
+					.trbmeta-container
+						h2 HTML
+						div
+							p HTML講座では、ホームページを作成するためのHTMLリファレンスと、コーディングガイドライン、CSSやJavaScriptといった関連技術の紹介、スマートフォン対応などを詳しく説明しています。
+						a(href="").lineanime-button
+							span LEARN MORE
+
+				.swiper-slide
+					//- figure.photo
+					//- 	img(src="/common/img/category/bk/p03.jpg").
+					.trbmeta-container
+						h2 CSS
+						div
+							p CSS講座ではCSSガイドラインや、CSSを拡張するSassについて解説します。
+						a(href="").lineanime-button
+							span LEARN MORE
+				.swiper-slide
+					//- figure.photo
+					//- 	img(src="/common/img/category/bk/p03.jpg").
+					.trbmeta-container
+						h2 WordPress
+						div
+							p JavaScriptの概要から始まって、フレームワークやオブジェクトなど仕様の隅々まで解説しています。<br>沢山のサンプルコードとテクニック集もご用意、遠慮なくご利用ください。
+						a(href="").lineanime-button
+							span LEARN MORE
+				.swiper-slide
+					//- figure.photo
+					//- 	img(src="/common/img/category/bk/p03.jpg").
+					.trbmeta-container
+						h2 Word
+						div
+							p 標準SQLを押さえつつ、MySQLにそのまま使える講座です。書籍化しても、そのまま公開中です！
+
+						a(href="").lineanime-button
+							span LEARN MORE
+			.swiper-pagination
+
+
+
+		aside.box_ad
+			//- smart自動サイズ
+			.
+				<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9885420769768716" data-ad-slot="1836972888" data-ad-format="auto" data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+
+		//- 最新の記事一覧
+		div.category-container
+			.inner
+				h2 Programming Language
+					br
+					span プログラミング言語
+				ul.default-list
+					//- プログラミング言語講座の出力
+					each item in CATEGORY_P
+						li
+							a(href=item.url title=item.title_j).post_item
+								h3 #{item.title}
+									br
+									span -#{item.sup}
+								p !{item.description}
+		div.category-container
+			.inner
+				h2 Server Side
+					br
+					span サーバサイドの技術
+				ul.default-list
+					//- サーバ講座の出力
+					each item in CATEGORY_S
+						li
+							a(href=item.url title=item.title_j).post_item
+								h3 #{item.title}
+									br
+									span -#{item.sup}
+								p !{item.description}
+

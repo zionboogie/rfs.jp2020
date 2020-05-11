@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+/*#########################################################
+
+サイトのフッタ
+
+#########################################################*/
+.site-footer{
+	border-top: 20px solid $c-line;
+	padding-top: $mg*8;
+	@include mq(sm){
+		padding-top: $mg*4;
+	}
+	>.inner{
+		margin: auto auto $mg*8;
+		max-width: $w-content;
+		@include mq(sm){
+			margin-bottom: $mg*4;
+		}
+		// オーバーライド
+		> ul.horizontal-container{
+			margin: 0 $mg*4;
+			> li{
+				white-space: nowrap;
+				min-width: 300px;
+				&:first-child{
+					flex-grow: 0;
+					width: 40%;
+				}
+				h1{
+					@include mq(sm){
+						margin-bottom: $mg*3;
+					}
+					a{
+						text-decoration: none;
+						// font-size: $unit*4;
+						display: block;
+						width: 120px;
+					}
+				}
+				/* ========================================================
+				リンクリスト
+				=========================================================*/
+				ul.link-list{
+					list-style: none;
+					li{
+						margin-bottom: $mg;
+						a{
+							text-decoration: none;
+							&:hover{
+								// text-decoration: underline;
+								border-bottom: 1px solid #ff4e50;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+	/* ========================================================
+	rhythmfactory.jpへの誘導バナー
+	=========================================================*/
+	.gorhythmfactory-container{
+		padding: $mg*10 0;
+		background: #f2f2f2;
+		text-align: center;
+		>a{
+			position: relative;
+			display: block;
+			margin: auto;
+			max-width: $w-content;
+			// ロゴ
+			img{
+				width: 300px;
+			}
+			// 矢印
+			>.-right{
+				position: absolute;
+				top: 20px;
+				right: 150px;
+				@include mq(sm){
+					display: none;
+				}
+				&::before{
+					width: 70px;
+					height: 5px;
+					left: 30px;
+				}
+				&::after{
+					left: 30px;
+					width: 60px;
+					height: 60px;
+					border-top: 5px solid #000;
+					border-right: 5px solid #000;
+				}
+			}
+		}
+	}
+}

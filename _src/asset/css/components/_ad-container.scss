@@ -1,0 +1,22 @@
+/* ========================================================
+広告領域
+=========================================================*/
+.ad-container{
+	margin: $unit*4 auto;
+	&.-gray{
+		background: #f6f6f6;
+	}
+	&.-fullwidth{
+		width: 100%;
+		text-align: center;
+	}
+	&.-sidebar {
+		margin: 0 auto $unit*2;
+		text-align: center;
+	}
+}
+
+
+
+
+

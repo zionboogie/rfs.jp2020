@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/*#########################################################
+
+読み込み
+
+#########################################################*/
+// 基本設定
+@import "common.scss";
+@import "swiper.min";
+
+// $c-text: #343434;	// フォントカラー
+// $c-bg: #000;	// 背景色
+$c-anchor: #fff;	// リンク色
+$c-anchor-hover: #959595;	// ホバー時のリンク色
+$c-anchor-active: #00a0e9; // アクティブ時のリンク色
+$c-anchor-visited: $c-anchor; // 訪問済み時のリンク色
+$c-anchor-focus: $c-anchor-hover; // フォーカス時のリンク色
+
+
+body{
+}
+a {
+	color: $c-anchor;
+	&:visited {
+		color: $c-anchor-visited;
+	}
+	&:focus {
+		color: $c-anchor-focus;
+	}
+	&:hover {
+		color: $c-anchor-hover;
+		opacity: 0.6;
+	}
+	&:active {
+		color: $c-anchor-active;
+	}
+}
+
+
+
+/* ========================================================
+ヘッダ
+=========================================================*/
+.site-header{
+	background: none;
+	.sitelogo{
+		a{
+			// サイトロゴSVG
+			.logosvg{
+				// ロゴ
+				.logopath{
+					// fill: #fff !important;
+				}
+			}
+		}
+	}
+	// ナビゲーション
+	.site-nav{
+		ul{
+			li{
+				a{
+					color: #000;
+					span.hash{
+						color: cyan;
+					}
+				}
+			}
+		}
+	}
+	// フォーム
+	.search-form{
+		.field{
+			&::placeholder{
+				color: #fff;
+			}
+		}
+	}
+}
+.site-footer{
+	border: none;
+}
+
+
+
+
+// .js_sticky {
+// 	position: sticky;
+// }
+//
+// .js_sticky.sticky-fixed.is-sticky {
+// 	position: fixed;
+// 	backface-visibility: hidden;
+// }
+// .js_sticky.sticky-fixed.is-sticky:not([style*="margin-top"]) {
+// 	margin-top: 0 !important;
+// }
+// .js_sticky.sticky-fixed.is-sticky:not([style*="margin-bottom"]) {
+// 	margin-bottom: 0 !important;
+// }
+// .js_sticky.sticky-fixed.is-absolute{
+// 	position: absolute;
+// }
+
+
+/*#########################################################
+
+
+
+#########################################################*/
+/* ========================================================
+ピックアップ
+=========================================================*/
+.area_pickup{
+	display: flex;
+	width: 100%;
+	background: yellow;
+	justify-content: space-between;
+	.read {
+		margin: 200px -100px 0 200px;
+		width: 300px;
+		height: auto;
+		// flex-shrink: 0;
+		z-index: 10;
+		a{
+			display: block;
+			margin-bottom: $mg*5;
+			color: #000;
+			text-decoration: none;
+		}
+		h2{
+			margin-bottom: $mg*2;
+			line-height: 1;
+		}
+		p{
+			display: inline;
+			color: #fff;
+			background: #000;
+		}
+	}
+	.visual_bg{
+		// padding-top: 220px;
+		// right: 0;
+		width: 80%;
+		height: 1200px;
+		background: url(/common/img/parent/bg2.jpg) no-repeat;
+		background-size: cover;
+		.img{
+			width: 100%;
+			height: 1200px;
+			// min-height: 1200px;
+			background: url(/common/img/parent/bg2.jpg) no-repeat;
+			// background-size: cover;
+		}
+	}
+
+}
+
+.swiper-card{
+	margin: $mg*15 auto $mg*10;
+	height: auto;
+	.swiper-wrapper{
+		.swiper-slide{
+			max-width: 400px;
+			width: auto;
+			opacity: 1;
+		}
+	}
+}
+.swiper-pagination-bullet{
+	background: $c-line;
+}
+
+.trbmeta-container{
+	position: relative;
+	right: initial;
+	top: initial;
+	margin: $mg*5 0;
+	h2{
+		margin-bottom: $mg*5;
+		font-size: $unit*6;
+		line-height: 1;
+		color: #000;
+	}
+	p{
+		background-color: #000;
+	}
+	.btn_viewmore{
+	}
+	.arrow_right{
+		&:before{
+		}
+		&:after{
+		}
+	}
+	a.lineanime-button{
+		margin-top: $mg*2;
+		color: #fff;
+		// 線
+		&::after {
+			background-color: #fff;
+		}
+	}
+}
+
+
+
+.category-container{
+	margin-bottom: $mg*5;
+	.inner{
+		@extend %w-content;
+		h2{
+			margin-bottom: $mg*5;
+			font-size: $unit*3;
+			line-height: 1;
+			color: #fde3c5;
+			span{
+				font-size: $unit*1.8;
+				color: #848488;
+			}
+		}
+		.default-list{
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			list-style: none;
+			li{
+				flex-shrink: 0;
+				margin-bottom: $mg*5;
+				width: 25%;
+				padding-right: 20px;
+				&:last-child{
+					margin-right: 0;
+				}
+				a{
+					display: block;
+					color: #fff;
+					text-decoration: none;
+					h3{
+						margin-bottom: $mg*2;
+						line-height: 1.2;
+						font-size: $unit*2.5;
+						span{
+							font-size: $unit*1.8;
+							color: #848488;
+						}
+					}
+					p{
+						display: inline;
+						background-color: #a70655;
+					}
+				}
+			}
+		}
+	}
+
+}
+

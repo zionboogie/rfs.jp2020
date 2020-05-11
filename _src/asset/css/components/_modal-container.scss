@@ -1,0 +1,54 @@
+
+
+/*#########################################################
+
+モーダル
+
+#########################################################*/
+
+.modal-container {
+	position: fixed;
+	display: none;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: $mg*20 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	@include mq(sm) {
+		z-index: 2500;
+		padding: $mg*1 0;
+		overflow: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	>.outer-container{
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 750px;
+		margin: auto;
+		background: #000;
+		border-radius: 8px;
+		@media (max-width: 1073px) {
+			width: 90%;
+		}
+
+		// 閉じるボタン
+		.close-button{
+			position: absolute;
+			top: -30px;
+			right: -30px;
+			z-index: 1000;
+		}
+		>.--js-youtube-modal {
+			// display: none;
+		}
+	}
+
+}
+
+// 開くアクション
+.--js-show-modal {
+	display: block;
+}

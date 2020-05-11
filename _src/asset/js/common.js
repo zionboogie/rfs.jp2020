@@ -17,12 +17,29 @@ if((ua.indexOf('iPhone') > 0) || ua.indexOf('iPod') > 0 || (ua.indexOf('Android'
 #########################################################*/
 document.addEventListener("DOMContentLoaded", function(event) {
 
+	/* ========================================================
+	anime.jsを使ったスムーズスクロール
+	=========================================================*/
+	var links = document.querySelectorAll('a[href*="#"]');  //#がリンクに含まれているアンカータグを全て取得
+	for (var i = 0; i < links.length; i++) {
+		links[i].addEventListener('click', function (e) {
+	//		anime.remove("html, body");
 
-	// aタグ要素の参照を取得
-	var elm = document.querySelectorAll('a[href^="#"]');
-	// 各aタグにクリックイベントを設定
-	for ( var i = 0; i < elm.length; i++ ) {
-		smoothScroll(elm, i);
+			var href = e.currentTarget.getAttribute('href');   //href取得
+
+			if ( target_id = href.split('#')[1] ){	// ターゲット名の取得
+				var target = document.getElementById(target_id);    //リンク先の要素（ターゲット）取得
+				var targetRect = target.getBoundingClientRect();   //ターゲットの座標取得
+				anime({
+					targets: "html, body",
+					scrollTop: targetRect.top,
+					dulation: 600,
+					easing: 'easeOutCubic',
+				});
+			}
+			return false;
+
+		});
 	}
 
 
@@ -31,17 +48,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	=========================================================*/
 
 	// ハンバーガーボタン
-	var btm_menu = ".js_click_menu";
+	var btm_menu = ".--js-menu-button";
 
 	// アコーディオンメニュー：テキストを囲うボックス
-	var acbutton_class = "js_category_title";
+	var acbutton_class = "--js-category-title";
 	// アコーディオンメニュー：アコーディオン領域
-	var acbox_class = "js_category_menu";
+	var acbox_class = "--js-category-menu";
 
 	// テキストアニメーション：テキストを囲うボックス
-	var char_class = "js_char_animation";
+	var char_class = "--js-charanimation";
 	// テキストアニメーション：テキストの下のライン
-	var line = "js_text_under_line";
+	var line = "--js-textunderline";
 	// テキストアニメーション：テキストを囲うボックスの取得（複数可能）
 	var item_anime = document.querySelectorAll("." + char_class);
 	// テキストアニメーション：ボックス毎の処理
@@ -236,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	rhythmfactory.jpへの動線
 	=========================================================*/
 	// テキストを囲うボックスの取得（複数可能）
-	var btn_slide = document.querySelectorAll(".js_btn_slide");
+	var btn_slide = document.querySelectorAll(".--js-slidebutton");
 	// ボックス毎の処理
 	for (var i = 0; i < btn_slide.length; i++) {
 
@@ -264,32 +281,16 @@ window.addEventListener('scroll', function(e) {
 	var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	if ( scrollTop > px_change ) {
 		addSmaller();
-		document.querySelector( ".btn_backtotop" ).classList.add( "fadein" );
+		document.querySelector( ".--js-backtotop-button" ).classList.add( "fadein" );
 
 	// 変化するポイント以前であればクラスを削除
 	} else {
 		removeSmaller();
-		document.querySelector( ".btn_backtotop" ).classList.remove( "fadein" );
+		document.querySelector( ".--js-backtotop-button" ).classList.remove( "fadein" );
 	}
 });
 
 
-function smoothScroll(links, i) {
-	links[i].addEventListener('click', function(e){
-		// デフォルトのイベントをキャンセル
-		e.preventDefault();
-		// 対象（aタグ）のY軸の絶対座標を取得
-		var elemY = links[i].getBoundingClientRect().top;
-		// 現在のスクロール量を取得
-		var scrollY = window.pageYOffset;
-		// 対象までのスクロール量を算出
-		var top = elemY - scrollY;
-		window.scroll({
-			top: top,
-			behavior: 'smooth'
-		});
-	});
-}
 
 // リサイズ時に縮小ヘッダ用クラスを追加・削除する
 var x = 970;
@@ -310,13 +311,13 @@ checkResize();
 
 // 縮小ヘッダ用クラスの追加
 function addSmaller(){
-	document.querySelector( ".site_header" ).classList.add( "smaller" );
+	document.querySelector( ".site-header" ).classList.add( "is-small" );
 	// document.querySelector( ".site_logo" ).classList.remove( "sprite_logo" );
 	// document.querySelector( ".site_logo" ).classList.add( "sprite_logo_s" );
 }
 // 縮小ヘッダ用クラスの削除
 function removeSmaller(){
-	document.querySelector( ".site_header" ).classList.remove( "smaller" );
+	document.querySelector( ".site-header" ).classList.remove( "is-small" );
 	// document.querySelector( ".site_logo" ).classList.add( "sprite_logo" );
 	// document.querySelector( ".site_logo" ).classList.remove( "sprite_logo_s" );
 }
@@ -338,7 +339,7 @@ window.addEventListener("load", function(event) {
 要素の高さ揃え
 =========================================================*/
 function setHeightBox(NAME){
-	NAME = NAME ? NAME : "js_fix";
+	NAME = NAME ? NAME : "js-fix";
 	// 高さ揃え
 	var elem = document.getElementsByClassName(NAME);
 	var h_list = getHeight(elem);

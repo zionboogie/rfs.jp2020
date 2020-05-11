@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+/*#########################################################
+
+モーダル
+
+#########################################################*/
+/* ========================================================
+メニューオープン後の下敷き
+=========================================================*/
+$c-darkgray: #252f39;
+.menumodal-container {
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	top: 0;
+	pointer-events: none;
+	.modalanime {
+		position: absolute;
+		width: 800px;
+		height: 800px;
+		background-color: $c-darkgray;
+		border-radius: 50%;
+		pointer-events: none;
+		transform: scale(0, 0);
+		top: -400px;
+		right: -400px;
+
+	}
+}
+
+
+// ナビゲーションコンテンツ用
+.menu-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 110;
+	opacity: 0;
+	color: #fff;
+	pointer-events: none;
+	background-color: $c-darkgray;
+	overflow: hidden;
+	&.active {
+		pointer-events: initial;
+	}
+	.inner{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+
+		// アニメーションタイトル
+		.category-title {
+			margin-bottom: $mg*2;
+			font-size: $unit*3;
+			letter-spacing: $unit*0.5;
+			cursor: pointer;
+
+			@include mq(sm){
+				font-size: $unit*1.5;
+			}
+			.text-container {
+				position: relative;
+				display: inline-block;
+				// padding: $unit*0.1 $unit*0.05 $unit*0.15 0;
+				.textunderline {
+					position: absolute;
+					left: 0;
+					height: 2px;
+					width: 100%;
+					background-color: #fff;
+					transform-origin: 100% 100%;
+					bottom: -$mg*1.5;
+				}
+				.charanimation {
+					display: inline-block;
+					line-height: $unit*1;
+				}
+			}
+		}
+		// カテゴリ内コンテンツ用リスト
+		.category-menu{
+			overflow: hidden;
+			opacity: 0;
+			transition: all 0.5s;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-content: center;
+			list-style: none none;
+			margin: $unit*0.5 auto;
+			width: 980px;
+			@include mq(sm){
+				width: 95%;
+			}
+			li{
+				margin-bottom: $unit*0.5;
+				@include mq(sm){
+					margin-bottom: $unit*0;
+				}
+				a.menuitem-button{
+					margin: $mg*0.2;
+					color: #fff;
+					text-decoration: none;
+					display: block;
+					padding: $unit*2;
+					transition: all 0.5s ease-in-out;
+					border-radius: 3px;
+					border: none;
+					font-size: $unit*2;
+					line-height: $unit*2;
+					background-color: #000;
+					@include mq(sm){
+						// padding: $unit*0.5;
+						line-height: $unit*1.5;
+						font-size: $unit*1.6;
+					}
+					&:hover{
+						color: #fff;
+						background: $c-accent;  /* fallback for old browsers */
+						background: $c-gradient; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+					}
+				}
+			}
+		}
+	}
+}
+

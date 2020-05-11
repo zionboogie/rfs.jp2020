@@ -8,16 +8,14 @@
 #########################################################*/
 document.addEventListener("DOMContentLoaded", function(event) {
 
-
-
 	/* ========================================================
 	モーダルの表示
 	=========================================================*/
 	function setModal(NAME){
 		NAME = NAME ? NAME : "";
-		var modal = document.querySelector('.js_modal'+NAME);	// モーダルウインドウ
-		var openModal = document.querySelectorAll('.js_open_modal'+NAME);	// モーダル呼び出しボタン
-		var closeModal = document.querySelectorAll('.js_close_modal'+NAME);	// 閉じるボタン
+		var modal = document.querySelector('.--js-modal'+NAME);	// モーダルウインドウ
+		var openModal = document.querySelectorAll('.--js-openmodal'+NAME);	// モーダル呼び出しボタン
+		var closeModal = document.querySelectorAll('.--js-closemodal'+NAME);	// 閉じるボタン
 		var name;
 
 		if ( openModal && modal ){
@@ -25,15 +23,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				// モーダルを開くボタンをクリック
 				openModal[i].addEventListener('click', function(e){
 					e.preventDefault();
-
 					// Musicの場合
 					if ( name = this.dataset.name ){
-						document.querySelector(".js_modal_youtube").innerHTML = document.querySelector(this.dataset.name).innerHTML;
-						var name = ".js_modal_youtube .youtube-player"
+						document.querySelector(".--js-youtube-modal").innerHTML = document.querySelector(this.dataset.name).innerHTML;
+						var name = ".--js-youtube-modal .youtube-player"
 						document.querySelector(name).setAttribute("src", document.querySelector(name).getAttribute("data-src"));
 					}
 
-					modal.classList.add('js_show_modal');
+					modal.classList.add('--js-show-modal');
 					// スクロール禁止
 					document.querySelector('html, body').style.overflow = 'hidden';
 				});
@@ -41,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			for (var i = 0; i < closeModal.length; i++) {
 				// モーダルを閉じるボタンをクリック
 				closeModal[i].addEventListener('click', function(){
-					modal.classList.remove('js_show_modal');
+					modal.classList.remove('--js-show-modal');
 					// スクロール解除
 					document.querySelector('html, body').style.overflow = 'auto';
 				});
@@ -113,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	/* ========================================================
 	メインビジュアルスライダー
 	=========================================================*/
-	var swiper = new Swiper('.swiper-container', {
+	var swiper = new Swiper('.--js-swiper1', {
 		effect: 'fade',
 		init: false,
 		fadeEffect: {
@@ -136,17 +133,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		// observeParents: true
 	});
 	swiper.on('init', function () {
-		document.querySelector(".mv01").classList.add("active");
+		document.querySelector(".-mv01").classList.add("active");
 	});
 	swiper.on('slideChange', function () {
-		document.querySelector(".mv02").classList.add("active");
+		document.querySelector(".-mv02").classList.add("active");
 	});
 	swiper.init();
 
 	/* ========================================================
 	カテゴリスライダー
 	=========================================================*/
-	var swiper2 = new Swiper('.swiper-container2', {
+	var swiper2 = new Swiper('.--js-swiper2', {
 		autoplay: {
 			delay: 5000
 		},
@@ -163,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			clickable: true,
 		},
 	});
-	var swiper3 = new Swiper('.swiper-container3', {
+	var swiper3 = new Swiper('.--js-swiper3', {
 		autoplay: {
 			delay: 6000
 		},
@@ -184,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	/* ========================================================
 	Musicスライダー
 	=========================================================*/
-	var swiper4 = new Swiper('.swiper-container4', {
+	var swiper4 = new Swiper('.--js-swiper4', {
 		autoplay: {
 			delay: 5000
 		},
@@ -203,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		on: {
 			init: function () {
 				// Music
-				setModal("_music");
+				setModal("music");
 			},
 		},
 	});

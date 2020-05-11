@@ -1,0 +1,20 @@
+/* ========================================================
+横並び一覧
+=========================================================*/
+.horizontal-list{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	list-style: none;
+	> li{
+		flex-shrink: 0;
+		margin-bottom: $mg*5;
+		&:last-child{
+			margin-right: 0;
+		}
+		> a{
+			display: block;
+			text-decoration: none;
+		}
+	}
+}

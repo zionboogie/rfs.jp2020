@@ -1,0 +1,12 @@
+/* ========================================================
+一覧用タイトル（下ボーダー）
+=========================================================*/
+.default-title{
+	margin-bottom: $mg*3;
+	padding-bottom: $mg*2;
+	font-size: $unit*1.8;
+	color: #626262;
+	letter-spacing: 2px;
+	max-width: 270px;
+	border-bottom: 1px solid $c-line;
+}

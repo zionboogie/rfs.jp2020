@@ -5,44 +5,45 @@
 	#########################################################
 
 //- お問い合わせ
-article.area_company_pr
-	a(href="https://rhythmfactory.jp/" target="_blank" title="株式会社リズムファクトリー").button.js_btn_slide
+article.companypr-container
+	a(href="https://rhythmfactory.jp/" target="_blank" title="株式会社リズムファクトリー").banner-container.-slidebutton.--js-slidebutton
 		h3 CONTACT WITH RHYTHMFACTORY
 		p リズムファクトリーはホームページの制作会社です。
 			br
 			| ホームページ制作に関するご要望・ご相談はこちらからどうぞ。
-		div.btn_circle
-			span.arrow.arrow_o_right
+		div.default-button.-link-contact.-is-link
+			span.arrow.-openright
+
 
 //- トップに戻る
-a(href="#top" class="btn_backtotop")
-	span.arrow.arrow_o_up
+a(href="#top").backtotop-button.--js-backtotop-button
+	span.arrow.-openup
 
 //- フッタ
-footer.site_footer
-	article.area_sitemap
-		ul.layout_ul
+footer.site-footer
+	article.inner
+		ul.horizontal-container
 			li
 				h1
 					a(href="/" title="smart")
 						img(src="/common/img/common/logo.svg")
 			li
-				h2 Programming Language
-				ul.link_list
+				h2.default-title Programming Language
+				ul.link-list
 					each item in CATEGORY_P
 						li
 							a(href=item.url title=item.title_j+" -"+item.sup) #{item.title}
 			li
-				h2 Server Side
-				ul.link_list
+				h2.default-title Server Side
+				ul.link-list
 					each item in CATEGORY_S
 						li
 							a(href=item.url title=item.title_j+" -"+item.sup) #{item.title}
 
-	aside.area_go_rhythmfactory
+	aside.gorhythmfactory-container
 		a(href="https://rhythmfactory.jp/" target="_blank" title="株式会社リズムファクトリー")
 			img(src="/common/img/common/logo_rhythmfactory.svg")
-			span.arrow.arrow_right リズムファクトリーのオフィシャルホームページ
+			span.arrow.-right リズムファクトリーのオフィシャルホームページ
 
 	p.copyright
 		small !{copyright}

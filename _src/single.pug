@@ -28,9 +28,10 @@ block vars
 		//- JSファイル名
 		var jsfile = 'single-dist.js'	
 
+
 //- _layout.pugのcontentsを再定義
 block contents
-	ul.breadcrumbs
+	ul.breadcrumb-container
 		li
 			//- span.arrow.arrow_o_right
 			a(href="")
@@ -40,29 +41,30 @@ block contents
 			a(href="")
 				| プログラミング言語・コーディング
 
-	main.container
+	main.main-container
 
-		.entry_header
-			.category_header Atom
-			h1.js_entry_title
-				span.hide Atomの高速化
-				span.js_title Atomの高速化
-		.entry_metadata
-			.po_date 2020年3月4日
-			.related_link
-				span.po_category category:
-				a(href="" rel="category tag") Atom講座
-				span.edit_link
-					a(href="").post_edit_link 編集 &rarr;
-		.wrapper_entry_sub
-			.entry_container
-				nav.navigation
-					.nav_previous
-						a(href="" rel="prev")
+		//- 記事ヘッダ
+		.entry-header
+			.categorytitle Atom
+			h1.entrytitle
+				span.--js-entrytitle Atomの高速化
+			.entrymeta-container
+				.podate 2020年3月4日
+				.relatedlink-list
+					span.pocategory category:
+					a(href="#" rel="category tag") Atom講座
+					span.edit_link
+						a(href="#").post_edit_link 編集 &rarr;
+
+		.entry-container
+			.inner
+				nav.pagination-container
+					.previous-button
+						a(href="#" rel="prev")
 							i.icon-left-open
 							span Atomで自動文字コード判別：auto-encodingパッケージ
-					.nav_next
-						a(href="" rel="next")
+					.next-button
+						a(href="#" rel="next")
 							span Atomの高速化
 							i.icon-right-open
 				.
@@ -74,6 +76,8 @@ block contents
 					</div>			
 
 				.entry
+
+
 					.
 
 						<div id="toc_container" class="no_bullets"><p class="toc_title">目次</p><ul class="toc_list"><li><a href="#Atom">不要なコアパッケージを整理してAtomの重さを解消</a><ul><li><a href="#Disable">コアパッケージをDisable状態にする手順</a></li><li><a href="#Disable-2">Disableにしても良さそうなコアパッケージの紹介</a><ul><li><a href="#i">不要パッケージ候補</a></li></ul></li><li><a href="#i-2">ボトルネックを調べる</a><ul><li><a href="#timecop">timecopの使い方</a></li></ul></li></ul></li></ul></div>
@@ -96,12 +100,12 @@ block contents
 						<ol><li>［Ctrl」+［Shift」+［p］でコマンド入力モードにする</li><li>コマンド入力でtimecopと入力し、「Timecop: View」を選択<br>なければパッケージでtimecopをアクティブにする</li></ol>
 
 
-				nav.navigation
-					.nav_previous
+				nav.pagination-container
+					.previous-button
 						a(href="" rel="prev")
 							i.icon-left-open
 							span Atomで自動文字コード判別：auto-encodingパッケージ
-					.nav_next
+					.next-button
 						a(href="" rel="next")
 							span Atomの高速化
 							i.icon-right-open
@@ -115,8 +119,8 @@ block contents
 
 
 
-				.area_comment
-					h2.comments_title Comment
+				.comment-container
+					h2.title Comment
 					.
 						<ol class="comment_list">
 							<li id="comment-897881" class="comment even thread-even depth-1">
@@ -159,21 +163,22 @@ block contents
 							</li><!-- #comment-## -->
 						</ol>
 
-					.comment_respond
-						h3.comment_reply_title コメントを残す
+					//- コメントを残す
+					.commentrespond-container
+						h3.title コメントを残す
 							small
 								a(rel="nofollow" id="cancel_comment_reply_link" href="" style="display:none;") コメントをキャンセル
-						form(action="" method="post").comment_form
+						form(action="" method="post").comment-form
 							p.logged_in_as
 								a(href="" ria-label="") リズムファクトリー としてログイン中
 								a(href="") ログアウトしますか 
-							p.comment_form_comment
+							p.comment-textarea
 								label(for="comment1") コメント
 								textarea(name="comment" cols="45" rows="8" maxlength="65525" required="required")#comment1
-							p.comment_subscription_form
+							p.subscription-text
 								input(type="checkbox" name="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;")#subscribe_comments
 								label(for="subscribe_comments").subscribe_label 新しいコメントをメールで通知
-							p.comment_subscription_form
+							p.subscription-text
 								input(type="checkbox" name="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;")#subscribe_blog
 								label(for="subscribe_blog").subscribe_label 新しい投稿をメールで受け取る
 							p.form_submit
@@ -192,7 +197,7 @@ block contents
 						<!-- /Google Adsence 関連記事 -->
 
 						<!-- 広告 -->
-						<div class="box_ad_footer">
+						<div class="ad-container -fullwidth">
 
 							<!-- smart自動サイズ -->
 							<ins class="adsbygoogle"
@@ -218,9 +223,9 @@ block contents
 
 
 
-			.sub
+			.sidebar-container
 				//- 広告
-				.box_ad_sub
+				.ad-container.-sidebar
 				.
 						<!-- smart自動サイズ -->
 						<ins class="adsbygoogle"
@@ -260,7 +265,7 @@ block contents
 								a(href=item.url title=item.title_j) #{item.title}
 
 				//- 広告
-				.box_ad_sub
+				.ad-container.-sidebar
 					.
 						<!-- smart自動サイズ -->
 						<ins class="adsbygoogle"

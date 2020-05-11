@@ -1,0 +1,288 @@
+
+
+/*#########################################################
+
+アニメーション
+
+#########################################################*/
+@keyframes fade{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+
+
+/*#########################################################
+
+余白（なるべく使わない）
+
+#########################################################*/
+/* ========================================================
+下余白
+=========================================================*/
+/*
+.mb1{
+	margin-bottom: $mg*1;
+}
+.mb2{
+	margin-bottom: $mg*2;
+}
+.mb3{
+	margin-bottom: $mg*3;
+}
+.mb4{
+	margin-bottom: $mg*4;
+}
+.mb5{
+	margin-bottom: $mg*5;
+}
+*/
+/* ========================================================
+右余白
+=========================================================*/
+/*
+.mr1{
+	margin-right: $mg*1;
+}
+.mr2{
+	margin-right: $mg*2;
+}
+.mr3{
+	margin-right: $mg*3;
+}
+.mr4{
+	margin-right: $mg*4;
+}
+.mr5{
+	margin-right: $mg*5;
+}
+*/
+
+/*#########################################################
+
+共通アイコン・共通設定
+
+#########################################################*/
+
+/* ========================================================
+PC版・SP版専用設定(モバイルファースト用)
+=========================================================*/
+/*
+.pc{
+	display: none !important;
+	@include mq(lg){
+		display: inherit !important;
+	}
+}
+.sp{
+	display: inherit !important;
+	@include mq(lg){
+		display: none !important;
+	}
+}
+*/
+
+/* ========================================================
+PC版・SP版専用設定(PCファースト用)
+=========================================================*/
+.pc{
+	@include mq(sm){
+		display: none !important;
+	}
+}
+.sp{
+	display: none !important;
+	@include mq(sm){
+		display: inherit !important;
+	}
+}
+
+/* ========================================================
+矢印
+=========================================================*/
+$arrow-len: 9px;
+$arrow-width: 1px;
+%arrow-o-before{
+	width: $arrow-len;
+	height: $arrow-len;
+	border-top: $arrow-width solid #000;
+	border-right: $arrow-width solid #000;
+}
+%arrow-after{
+	width: $arrow-len;
+	height: $arrow-len;
+	border-top: $arrow-width solid #000;
+	border-right: $arrow-width solid #000;
+}
+.arrow {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+	text-indent: -10000px;
+	width: $arrow-len;
+	height: $arrow-len;
+	&::after,
+	&::before {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		content: "";
+		margin: auto;
+		vertical-align: middle;
+	}
+	// 上下オープン矢印
+	&.-opendown::before,
+	&.-openup::before {
+		@extend %arrow-o-before;
+		transform: rotate(-45deg);
+	}
+	&.-opendown::before{
+		transform: rotate(135deg);
+	}
+	// 左右オープン矢印
+	&.-openleft::before,
+	&.-openright::before {
+		@extend %arrow-o-before;
+		transform: rotate(45deg);
+	}
+	&.-openleft::before{
+		transform: rotate(-135deg);
+	}
+
+	// 上下矢印
+	&.-up,
+	&.-down{
+		width: $arrow-len;
+		&::before{
+			right: 0;
+			width: $arrow-width;
+			height: $arrow-len;
+			background: #000;
+		}
+		&::after{
+			@extend %arrow-after;
+			transform: rotate(-45deg);
+		}
+	}
+	&.-down{
+		&::after{
+			transform: rotate(135deg);
+		}
+	}
+
+	// 左右矢印
+	&.-left,
+	&.-right{
+		&::before{
+			width: $arrow-len;
+			height: $arrow-width;
+			background: #000;
+		}
+		&::after{
+			@extend %arrow-after;
+			transform: rotate(45deg);
+		}
+	}
+	&.-left::after{
+		transform: rotate(-135deg);
+	}
+}
+
+
+
+
+/*#########################################################
+
+プロジェクト専用
+
+#########################################################*/
+
+
+/* ========================================================
+NEWタグ
+=========================================================*/
+.new {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: -10px;
+	left: 10px;
+	text-align: center;
+	&:before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 10px;
+		background: darken($c-accent, 25%);
+		left: 0;
+		top: 0;
+		transform: skewX(22deg);
+		transform-origin: 0 0;
+		z-index: 1;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: $c-accent;
+		z-index: 2;
+	}
+	span{
+		position: relative;
+		line-height: 40px;
+		font-size: 12px;
+		letter-spacing: .05em;
+		color: #fff;
+		z-index: 3;
+	}
+}
+
+/* ========================================================
+NO
+=========================================================*/
+.no{
+	display: inline-block;
+	margin-bottom: $mg*3;
+	color: #FFF;
+	font-size: $unit*1;
+	letter-spacing: 0.032em;
+	line-height: 1;
+	text-align: center;
+	&::after {
+		background-color: #fff;
+		content: "";
+		display: block;
+		height: 1px;
+		margin: auto;
+		position: relative;
+		width: 2.3077em;
+	}
+	span{
+		font-size: $unit*5;
+		line-height: 1.2;
+	}
+}
+
+/* ========================================================
+コピーライト
+=========================================================*/
+.copyright{
+	padding: $mg*2 0;
+	text-align: center;
+	color: #000;
+	background: #f2f2f2;
+}
+
+
+
+/* ========================================================
+画像の遅延読み込み用
+=========================================================*/
+.lazyloaded{
+	opacity: 1;
+}

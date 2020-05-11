@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+// アニメーション
+@keyframes burger-hover {
+	0% {
+		animation-timing-function: linear;
+	}
+	50% {
+		transform: translateX(40px);
+		opacity: 1
+	}
+	51% {
+		transform: translateX(40px);
+		opacity: 0
+	}
+	52% {
+		transform: translateX(-40px);
+		opacity: 0
+	}
+	53% {
+		transform: translateX(-40px);
+		opacity: 1
+	}
+	100% {
+		transform: translateX(0%)
+	}
+}
+
+/* ========================================================
+ハンバーガーボタン
+=========================================================*/
+.menu-button {
+	// position: absolute;
+	// right: 30px;
+	// top: $mg*3.5;
+	display: block;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	z-index: 150;
+	overflow: hidden;
+	@include mq(sm){
+	}
+
+	// ホバー時のアニメーション
+	&:hover{
+		background: none;
+		.hamburgerbutton {
+			background: $c-gradient;
+			width: 50px;
+			animation: burger-hover 0.4s forwards;
+
+			/* 上下のライン */
+			&:after,
+			&:before {
+				background: $c-gradient;
+			}
+		}
+
+	}
+
+	/* 3本線アイコン用プレースホルダ */
+	%btn-icon {
+		display: block;
+		top: 49%;
+		left: 50%;
+		width: 24px;
+		height: 3px;
+		background: #4a4a48;
+		z-index: 2100;
+	}
+	/* 3本線アイコン */
+	.hamburgerbutton {
+		@extend %btn-icon;
+		position: relative;
+		margin-left: -12px;
+		transition: transform 0.5s;
+		transition: width 0.3s ease-out;
+		/* 上下のライン */
+		&:after,
+		&:before {
+			@extend %btn-icon;
+			position: absolute;
+			content: "";
+			left: 0;
+			transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+		&:before {
+			margin-top: -8px;
+		}
+		&:after {
+			margin-top: 5px;
+		}
+	}
+
+	/* 3本線アイコンを×アイコンに変化させる */
+	&.active {
+		span{
+			background: transparent !important;
+
+			&:after,
+			&:before {
+				margin-top: 0 !important;
+			}
+			&:before {
+				transform: translateY(0px) rotateZ(-135deg)!important;
+			}
+			&:after {
+				transform: translateY(0px) rotateZ(135deg)!important;
+			}
+		}
+	}
+}

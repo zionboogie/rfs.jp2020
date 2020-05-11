@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/* ========================================================
+スクロールボタン
+=========================================================*/
+// メインビジュアル最下部の	［explore］アニメーション
+a.scroll-button {
+	padding-top: $mg*7;
+	position: absolute;
+	bottom: $mg*5;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 2;
+	display: inline-block;
+	color: #000;
+	font-size: $unit*2;
+	font-weight: bold;
+	letter-spacing: .1em;
+	text-decoration: none;
+	transition: opacity .3s;
+	@include mq(sm){
+		bottom: $mg*4;
+		font-size: $unit*1.6;
+	}
+	&:hover{
+		color: #fff;
+	}
+	span {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 24px;
+		height: 24px;
+		margin-left: -12px;
+		border-left: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		transform: rotate(-45deg);
+		animation: sdb05 1.5s infinite;
+		box-sizing: border-box;
+	}
+}
+@keyframes sdb05 {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(-45deg) translate(-20px, 20px);
+		opacity: 0;
+	}
+}

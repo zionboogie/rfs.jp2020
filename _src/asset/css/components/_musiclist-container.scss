@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+
+
+/* ========================================================
+Best Music:記事一覧
+=========================================================*/
+.musiclist-container{
+	padding-bottom: $mg*5;
+	background: #000;
+	color: #fff;
+	@include mq(sm){
+		padding-bottom: $mg*2;
+	}
+	a{
+		color: #cfb896;
+	}
+	>.inner{
+		max-width: $w-content;
+		margin: 0 auto;
+		>.title{
+			background: none;
+			margin: auto;
+			padding: $mg*5 0;
+			text-align: center;
+			@include mq(sm){
+				padding: $mg*2 0;
+			}
+
+		}
+	}
+	.default-button{
+		text-decoration: none;
+		&:hover{
+			opacity: 1;
+			color: #fff;
+		}
+	}
+}
+

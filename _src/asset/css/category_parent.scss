@@ -5,16 +5,23 @@
 
 #########################################################*/
 // 基本設定
-@import "common.scss";
+@import "style.scss";
 @import "swiper.min";
 
-// $c-font: #343434;	// フォントカラー
+
+// $c-text: #343434;	// フォントカラー
 // $c-bg: #000;	// 背景色
 $c-anchor: #fff;	// リンク色
 $c-anchor-hover: #959595;	// ホバー時のリンク色
 $c-anchor-active: #00a0e9; // アクティブ時のリンク色
 $c-anchor-visited: $c-anchor; // 訪問済み時のリンク色
 $c-anchor-focus: $c-anchor-hover; // フォーカス時のリンク色
+
+
+
+// カテゴリ一覧
+@import "components/category-container.scss";
+
 
 
 body{
@@ -42,14 +49,14 @@ a {
 /* ========================================================
 ヘッダ
 =========================================================*/
-.site_header{
+.site-header{
 	background: none;
-	.site_logo{
+	.sitelogo{
 		a{
 			// サイトロゴSVG
-			.logo_svg{
+			.logosvg{
 				// ロゴ
-				.logo_path{
+				.logopath{
 					opacity: 0.3;
 					fill: #fff !important;
 				}
@@ -57,7 +64,7 @@ a {
 		}
 	}
 	// ナビゲーション
-	.site_nav{
+	.site-nav{
 		ul{
 			li{
 				a{
@@ -70,29 +77,19 @@ a {
 		}
 	}
 	// フォーム
-	.form_search{
-		.f_search{
+	.search-form{
+		.field{
 			&::placeholder{
 				color: #fff;
 			}
 		}
 	}
 }
-.site_footer{
+.site-footer{
 	border: none;
 }
 
-
-
-/*#########################################################
-
-
-
-#########################################################*/
-
-
-
-.area_hook{
+.swiper-card{
 	margin: $mg*15 auto $mg*10;
 	height: auto;
 	.swiper-wrapper{
@@ -106,91 +103,3 @@ a {
 .swiper-pagination-bullet{
 	background: $c-line;
 }
-
-.visual_meta{
-	position: relative;
-	right: initial;
-	top: initial;
-	margin: $mg*5 0;
-	h2{
-		margin-bottom: $mg*5;
-		font-size: $unit*10;
-		line-height: 1;
-		color: #fff;
-		opacity: 0.2;
-		font-weight: bold;
-	}
-	p{
-		background-color: #a70655;
-	}
-	.btn_viewmore{
-	}
-	.arrow_right{
-		&:before{
-		}
-		&:after{
-		}
-	}
-	a.btn_line_anime{
-		margin-top: $mg*2;
-		color: #fff;
-		// 線
-		&::after {
-			background-color: #fff;
-		}
-	}
-}
-
-
-
-.are_category_list{
-	margin-bottom: $mg*5;
-	.inner{
-		@extend %w-content;
-		h2{
-			margin-bottom: $mg*5;
-			font-size: $unit*3;
-			line-height: 1;
-			color: #fde3c5;
-			span{
-				font-size: $unit*1.8;
-				color: #848488;
-			}
-		}
-		.post_list{
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			list-style: none;
-			li{
-				flex-shrink: 0;
-				margin-bottom: $mg*5;
-				width: 25%;
-				padding-right: 20px;
-				&:last-child{
-					margin-right: 0;
-				}
-				a{
-					display: block;
-					color: #fff;
-					text-decoration: none;
-					h3{
-						margin-bottom: $mg*2;
-						line-height: 1.2;
-						font-size: $unit*2.5;
-						span{
-							font-size: $unit*1.8;
-							color: #848488;
-						}
-					}
-					p{
-						display: inline;
-						background-color: #a70655;
-					}
-				}
-			}
-		}
-	}
-
-}
-

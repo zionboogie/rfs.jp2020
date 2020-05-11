@@ -1,0 +1,20 @@
+
+/* ========================================================
+ボタン
+=========================================================*/
+.default-button{
+	margin: auto auto $mg*2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: $unit*16;
+	height: $unit*4;
+	color: #fff;
+	background-color: #222;
+	&:hover{
+		background: #ff4e50;
+	}
+	&.-ls-primary{
+
+	}
+}

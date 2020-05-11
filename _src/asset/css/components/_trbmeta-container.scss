@@ -1,0 +1,76 @@
+/* ========================================================
+category/category_parentで使われるヒーローエリアのタイトル
+=========================================================*/
+.trbmeta-container{
+	position: absolute;
+	top: 30px;
+	right: 15%;
+	max-width: 650px;
+	color: #dcdcdc;
+	@include mq(sm){
+		position: relative;
+		top: 0;
+		right: auto;
+	}
+	h1{
+		font-size: $unit*13;
+		color: #fff;
+		opacity: 0;
+		animation: slidebox 0.4s ease-out 1s 1 forwards;
+		@include mq(sm){
+			margin-bottom: $mg*4;
+			font-size: $unit*10;
+			line-height: 1;
+		}
+	}
+	p{
+		display: inline;
+		margin-bottom: $mg*3;
+		background: $c-text;
+	}
+	.default-button{
+		margin: $mg*3 0;
+	}
+	.-right{
+		&:before{
+			border-color: #fff;
+		}
+		&:after{
+			border-color: #fff;
+		}
+	}
+
+
+	/* ========================================================
+	title/read/button メタ情報
+	=========================================================*/
+	&.-swiper{
+		position: relative;
+		right: initial;
+		top: initial;
+		margin: $mg*5 0;
+		h2{
+			margin-bottom: $mg*5;
+			font-size: $unit*10;
+			line-height: 1;
+			color: #fff;
+			opacity: 0.2;
+			font-weight: bold;
+		}
+		p{
+			background-color: #a70655;
+		}
+		a.lineanime-button{
+			margin-top: $mg*2;
+			color: #fff;
+			// 線
+			&::after {
+				background-color: #fff;
+			}
+		}
+	}
+
+}
+
+
+

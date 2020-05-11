@@ -1,0 +1,19 @@
+/* ========================================================
+category.pug
+=========================================================*/
+ul.default-list{
+	list-style: none;
+	li{
+		a{
+			padding: $mg;
+			font-size: $unit*2;
+			color: $c-text;
+			.fa{
+				margin-right: $mg*2;
+			}
+			&:hover{
+				color: #fff;
+			}
+		}
+	}
+}

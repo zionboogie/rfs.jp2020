@@ -1,0 +1,59 @@
+
+
+/* ========================================================
+記事エントリのページナビゲーション
+=========================================================*/
+.pagination-container {
+	display: flex;
+	justify-content: space-between;
+	padding: $unit*4 0;
+	width: 100%;
+	.previous-button,
+	.next-button {
+		width: 50%;
+		a{
+			display: flex;
+			text-decoration: none;
+			line-height: 2;
+			&:hover i {
+				background-color: $c-accent;
+				border: 1px solid $c-accent;
+				color: #fff;
+			}
+			span{
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+		    }
+			i {
+				display: flex;
+				flex-shrink: 0;
+				justify-content: center;
+				align-items: center;
+				padding-top: 3px;
+				width: $unit*3;
+				height: $unit*3;
+				border: 1px solid $c-lightgray;
+				border-radius: 2px;
+				font-size: $unit*0.8;
+				transition: all 0.3s ease;
+			}
+		}
+	}
+	.previous-button {
+		a{
+			i{
+				margin-right: $mg;
+			}
+		}
+	}
+	.next-button {
+		a{
+			justify-content: flex-end;
+			i{
+				margin-left: $mg;
+			}
+		}
+	}
+}
+

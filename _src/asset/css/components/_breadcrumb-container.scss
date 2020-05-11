@@ -1,0 +1,27 @@
+/* ========================================================
+トピックパス
+=========================================================*/
+.breadcrumb-container{
+	display: flex;
+	list-style: none;
+	margin: $mg*15 auto $mg*5;
+	@extend %w-content;
+	width: 100%;
+	// flex-grow/flex-shrink/flex-basis
+	flex: 2 0 auto;
+	@include mq(sm){
+		margin: 90px auto 20px;
+	}
+	li{
+		margin-right: $mg;
+		a{
+			font-size: $unit*1.4;
+			text-decoration: none;
+			color: #a4a4a4;
+			&:before{
+				content: "/";
+				margin-right: $mg*0.5;
+			}
+		}
+	}
+}

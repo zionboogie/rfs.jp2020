@@ -1,0 +1,36 @@
+/* ========================================================
+閉じるボタン(a,button要素)
+=========================================================*/
+.close-button{
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	text-indent: -9999px;
+	border: 0;
+	background-color:#000;
+	border-radius:32px;
+	margin: 0;
+	padding: 0;
+	transform:scale(0.5);
+	cursor:pointer;
+	&::before,
+	&::after {
+		content:"";
+		position: absolute;
+		display: inline-block;
+		top: 14px;
+		left: 30px;
+		width: 4px;
+		height: 36px;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		background-color:#fff;
+	}
+	&::before {
+		transform:rotate(45deg);
+	}
+	&::after {
+		transform:rotate(-45deg);
+	}
+}

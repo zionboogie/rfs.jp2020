@@ -42,8 +42,8 @@ $fill: #434343;
 	}
 }
 // サイトロゴ
-.logo_svg{
-	.logo_path{
+.logosvg{
+	.logopath{
 		stroke: $line;	//線の色
 		stroke-dasharray: 1000;	//線の間隔
 		stroke-dashoffset: 1000;	//点線の開始位置
@@ -56,7 +56,7 @@ $fill: #434343;
 /* ========================================================
 スライダ
 =========================================================*/
-.area_hook {
+.swiper-card {
 	> .swiper-wrapper {
 		.mv01, .mv02{
 			width: 100% !important;

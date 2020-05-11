@@ -28,49 +28,50 @@ block vars
 		//- JSファイル名
 		var jsfile = 'category_parent-dist.js'	
 
+
 //- _layout.pugのcontentsを再定義
 block contents
 	main.container
 		//- article:独立した記事
-		article.area_hook.swiper-container
+		article.swiper-card.swiper-container
 			div.swiper-wrapper
 				.swiper-slide
 					//- figure.photo
 					//- 	img(src="/common/img/category/bk/p03.jpg").
-					.visual_meta
+					.trbmeta-container.-swiper
 						h2 HTML
 						div
 							p HTML講座では、ホームページを作成するためのHTMLリファレンスと、コーディングガイドライン、CSSやJavaScriptといった関連技術の紹介、スマートフォン対応などを詳しく説明しています。
-						a(href="").btn_line_anime
+						a(href="").lineanime-button
 							span LEARN MORE
 
 				.swiper-slide
 					//- figure.photo
 					//- 	img(src="/common/img/category/bk/p03.jpg").
-					.visual_meta
+					.trbmeta-container.-swiper
 						h2 CSS
 						div
 							p CSS講座ではCSSガイドラインや、CSSを拡張するSassについて解説します。
-						a(href="").btn_line_anime
+						a(href="").lineanime-button
 							span LEARN MORE
 				.swiper-slide
 					//- figure.photo
 					//- 	img(src="/common/img/category/bk/p03.jpg").
-					.visual_meta
+					.trbmeta-container.-swiper
 						h2 WordPress
 						div
 							p JavaScriptの概要から始まって、フレームワークやオブジェクトなど仕様の隅々まで解説しています。<br>沢山のサンプルコードとテクニック集もご用意、遠慮なくご利用ください。
-						a(href="").btn_line_anime
+						a(href="").lineanime-button
 							span LEARN MORE
 				.swiper-slide
 					//- figure.photo
 					//- 	img(src="/common/img/category/bk/p03.jpg").
-					.visual_meta
+					.trbmeta-container.-swiper
 						h2 Word
 						div
 							p 標準SQLを押さえつつ、MySQLにそのまま使える講座です。書籍化しても、そのまま公開中です！
 
-						a(href="").btn_line_anime
+						a(href="").lineanime-button
 							span LEARN MORE
 			.swiper-pagination
 
@@ -86,31 +87,31 @@ block contents
 
 
 		//- 最新の記事一覧
-		div.are_category_list
+		div.category-container
 			.inner
 				h2 Programming Language
 					br
 					span プログラミング言語
-				ul.post_list
+				ul.horizontal-list.-category
 					//- プログラミング言語講座の出力
 					each item in CATEGORY_P
 						li
 							a(href=item.url title=item.title_j).post_item
-								h3 #{item.title}
+								h3.title #{item.title}
 									br
 									span -#{item.sup}
 								p !{item.description}
-		div.are_category_list
+		div.category-container
 			.inner
 				h2 Server Side
 					br
 					span サーバサイドの技術
-				ul.post_list
+				ul.horizontal-list.-category
 					//- サーバ講座の出力
 					each item in CATEGORY_S
 						li
 							a(href=item.url title=item.title_j).post_item
-								h3 #{item.title}
+								h3.title #{item.title}
 									br
 									span -#{item.sup}
 								p !{item.description}

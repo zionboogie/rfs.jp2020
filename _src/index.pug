@@ -18,45 +18,48 @@ block vars
 		//- ページ設定
 		var page = {
 			url : 'index.html',
-			title : 'トップページ',
-			description : 'トップページです',
-			keywords : 'トップページ',
+			title : '',
+			description : '',
+			keywords : '',
 			image : image_path + '/ogp.jpg'
 		}
 		//- CSSファイル名
-		var cssfile = 'top.css'
+		var cssfile = 'style.css'
 		//- JSファイル名
 		var jsfile = 'top-dist.js'	
 
+
+
 //- _layout.pugのcontentsを再定義
 block contents
-	main.container
+	//- コンテンツ領域
+	main.main-container
 		//- article:スライダー
-		article.area_hook.swiper-container
-			div.inner.swiper-wrapper
+		article.swiper-card.swiper-container.--js-swiper1
+			div.swiper-wrapper
 				//- スライダー１
-				.swiper-slide.mv01
+				.swiper-slide.-mv01
 					.swper-content
-						h2.h_anime
+						h2.title.-animation
 							span Front End
 							span Web Developer 
 						div.split
-						h3 フロントエンドのウェブ制作を学ぶ
-						p.serif 
+						h3.subtitle フロントエンドのウェブ制作を学ぶ
+						p.-serif 
 							span HTML5やCSS３、JavaScriptなどの言語、それにAtomといったツール、
 							br
 							span 言語を覚えるための勉強方法などを紹介。
 					img(data-src="/common/img/top/bg1.jpg").swiper-lazy
 					.swiper-lazy-preloader
 				//- スライダー2
-				.swiper-slide.mv02
+				.swiper-slide.-mv02
 					.swper-content
-						h2.h_anime 
+						h2.title.-animation 
 							span Back End
 							span Web Developer 
 						div.split
-						h3 フロントエンドのウェブ制作を学ぶ
-						p.serif 
+						h3.subtitle フロントエンドのウェブ制作を学ぶ
+						p.-serif 
 							span PerlやPHP、SQLといったサーバサイドの言語や、コマンドライン、WordPress、
 							br
 							span AWS、MySQL、Apacheなどサーバソフトウエアの設定方法などを紹介。
@@ -65,28 +68,28 @@ block contents
 			.swiper-pagination
 
 		//- スクロールボタン
-		a(href="#section01").btn_scroll
+		a(href="#section01" data-scroll).scroll-button
 			span
 			|explore
 
 
 		//- 記事一覧
-		article.area_articles_list
+		article.articlelist-container
 			.inner#section01
-				h2 Programming Language
-				h3 プログラミング言語と関連技術、ツール
+				h2.title Programming Language
+				h3.subtitle プログラミング言語と関連技術、ツール
 
-			article.swiper-container2
+			article.swiper-container.-swiper2.--js-swiper2
 				div.swiper-wrapper
 					//- プログラム講座の出力
 					each item in CATEGORY_P
 						section.swiper-slide
-							a(href=item.url title=item.title_j).post_item
-								.inner.js_fix
+							a(href=item.url title=item.title_j).post-item
+								.fix-box.--js-fix-box
 									h4 #{item.title} -
 										span #{item.sup}
 									p !{item.description}
-								div.btn_viewmore VIEW MORE
+								div.default-button VIEW MORE
 
 				.swiper-button-next2
 				.swiper-button-prev2
@@ -94,7 +97,7 @@ block contents
 
 
 		//- 広告
-		aside.box_ad
+		aside.ad-container.-gray
 			//- smart自動サイズ
 			.
 				<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9885420769768716" data-ad-slot="1836972888" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -103,43 +106,45 @@ block contents
 				</script>
 
 		//- 記事一覧
-		article.area_articles_list
+		article.articlelist-container
 			.inner
-				h2 Server Side
-				h3 サーバ関連の構築・設定
+				h2.title Server Side
+				h3.subtitle サーバ関連の構築・設定
 
-			article.swiper-container3
+			article.swiper-container.-swiper3.--js-swiper3
 				div.swiper-wrapper
 					//- サーバ講座の出力
 					each item in CATEGORY_S
 						section.swiper-slide
-							a(href=item.url title=item.title_j).post_item
-								.inner.js_fix
+							a(href=item.url title=item.title_j).post-item
+								.fix.--js-fix
 									h4 #{item.title} -#{item.sup}
 									p !{item.description}
-								div.btn_viewmore VIEW MORE
+								div.default-button VIEW MORE
 
 				.swiper-button-next3
 				.swiper-button-prev3
 				.swiper-pagination3
 
+
 		//- モーダル
-		article.modal.js_modal_music
-			div.outer
-				button().btn.btn_close.js_close_modal_music 閉じる
-				div.js_modal_youtube
+		article.modal-container.--js-modalmusic
+			div.outer-container
+				button().btn.close-button.--js-closemodalmusic 閉じる
+				div.--js-youtube-modal
+
 
 
 		//- Music:記事一覧
-		article.area_music_list
+		article.musiclist-container
 			.inner
-				h2 Best Music
+				h2.title Best Music
 
-			article.swiper-container4
+			article.swiper-container.-swiper4.--js-swiper4
 				div.swiper-wrapper
 					section.swiper-slide
 						div.pc
-							a(href="#" data-name=".v1").js_open_modal_music
+							a(href="#" data-name=".v1").openmodalmusic.--js-openmodalmusic
 								img(src="https://img.youtube.com/vi/Js7m38oOAmw/mqdefault.jpg")
 							a(href="")
 								Velvet Negroni- Spiceworld
@@ -150,7 +155,7 @@ block contents
 								</div></figure>
 					section.swiper-slide
 						div.pc
-							a(href="#" data-name=".v2").js_open_modal_music
+							a(href="#" data-name=".v2").openmodalmusic.--js-openmodalmusic
 								img(src="https://img.youtube.com/vi/ZceD450vxUk/mqdefault.jpg")
 							a(href="")
 								Velvet Negroni- Spiceworld
@@ -162,7 +167,7 @@ block contents
 							
 					section.swiper-slide
 						div.pc
-							a(href="#" data-name=".v3").js_open_modal_music
+							a(href="#" data-name=".v3").openmodalmusic.--js-openmodalmusic
 								img(src="https://img.youtube.com/vi/ormQQG2UhtQ/mqdefault.jpg")
 							a(href="")
 								Velvet Negroni- Spiceworld
@@ -173,7 +178,7 @@ block contents
 								</div></figure>
 					section.swiper-slide
 						div.pc
-							a(href="#" data-name=".v1").js_open_modal_music
+							a(href="#" data-name=".v1").openmodalmusic.--js-openmodalmusic
 								img(src="https://img.youtube.com/vi/Js7m38oOAmw/mqdefault.jpg")
 							a(href="")
 								Velvet Negroni- Spiceworld
@@ -184,7 +189,7 @@ block contents
 								</div></figure>
 					section.swiper-slide
 						div.pc
-							a(href="#" data-name=".v2").js_open_modal_music
+							a(href="#" data-name=".v2").openmodalmusic.--js-openmodalmusic
 								img(src="https://img.youtube.com/vi/ZceD450vxUk/mqdefault.jpg")
 							a(href="")
 								Velvet Negroni- Spiceworld
@@ -196,7 +201,7 @@ block contents
 							
 					section.swiper-slide
 						div.pc
-							a(href="#" data-name=".v3").js_open_modal_music
+							a(href="#" data-name=".v3").openmodalmusic.--js-openmodalmusic
 								img(src="https://img.youtube.com/vi/ormQQG2UhtQ/mqdefault.jpg")
 							a(href="")
 								Velvet Negroni- Spiceworld
@@ -208,16 +213,16 @@ block contents
 				.swiper-button-next4
 				.swiper-button-prev4
 				.swiper-pagination4
-			a(href="").btn_viewmore VIEW MORE
+			a(href="").default-button VIEW MORE
 
 
 		//- 最新の記事一覧
-		div.are_post_list
+		div.postlist-container
 			.inner
-				h2 Latest Posts
-				ul.post_list
+				h2.title Latest Posts
+				ul.post-list
 					li
-						figure.li_img
+						figure.post-img
 							a(href="")
 								img(src="/common/img/common/dummy.jpg").lazy.post1
 						ul
@@ -225,12 +230,12 @@ block contents
 								a(href="") JavaScript
 							li
 								a(href="") HTML
-						h3.c-item__title
+						h3.title
 							a(href="") Atomの高速化
 						//- p In praise of being in-between.
 
 					li
-						figure.li_img
+						figure.post-img
 							a(href="")
 								img(src="/common/img/common/dummy.jpg").lazy.post2
 						ul
@@ -238,11 +243,11 @@ block contents
 								a(href="") JavaScript
 							li
 								a(href="") HTML
-						h3.c-item__title
+						h3.title
 							a(href="") Atomの高速化
 						//- p In praise of being in-between.
 					li
-						figure.li_img
+						figure.post-img
 							a(href="")
 								img(src="/common/img/common/dummy.jpg").lazy.post3
 						ul
@@ -250,11 +255,11 @@ block contents
 								a(href="") JavaScript
 							li
 								a(href="") HTML
-						h3.c-item__title
+						h3.title
 							a(href="") Atomの高速化
 						//- p In praise of being in-between.
 					li
-						figure.li_img
+						figure.post-img
 							a(href="")
 								img(src="/common/img/common/dummy.jpg").lazy.post4
 						ul
@@ -262,11 +267,11 @@ block contents
 								a(href="") JavaScript
 							li
 								a(href="") HTML
-						h3.c-item__title
+						h3.title
 							a(href="") Atomの高速化
 						//- p In praise of being in-between.
 					li
-						figure.li_img
+						figure.post-img
 							a(href="")
 								img(src="/common/img/common/dummy.jpg").lazy.post5
 						ul
@@ -274,7 +279,7 @@ block contents
 								a(href="") JavaScript
 							li
 								a(href="") HTML
-						h3.c-item__title
+						h3.title
 							a(href="") Atomの高速化
 						//- p In praise of being in-between.
 
