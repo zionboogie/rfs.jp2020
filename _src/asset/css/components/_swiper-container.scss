@@ -55,9 +55,11 @@ $tertiary-color: #000;
 	スタイル
 	=========================================================*/
 	&.-mv01, &.-mv02{
+		margin-top: calc( 50vh - 370px / 2 - #{$h-header} );
 		width: 100% !important;
+		height: 370px;
 		.title {
-			margin: $mg*5 0 $mg*6;
+			// margin: $mg*5 0 $mg*6;
 			font-size: $unit*12;
 			line-height: 0.7;
 			@include mq(sm){

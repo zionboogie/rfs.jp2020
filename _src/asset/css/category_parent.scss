@@ -61,6 +61,14 @@ a {
 					fill: #fff !important;
 				}
 			}
+			&:hover{
+				.logosvg{
+					// ロゴ
+					.logopath{
+						opacity: 1;
+					}
+				}
+			}
 		}
 	}
 	// ナビゲーション
@@ -102,4 +110,18 @@ a {
 }
 .swiper-pagination-bullet{
 	background: $c-line;
+}
+
+
+.companypr-container{
+	.banner-container{
+		background: #000;
+		color: #fff;
+		&::before,&::after{
+			background: #000;
+		}
+		.arrow.-openright:before{
+			border-color: #fff;
+		}
+	}
 }

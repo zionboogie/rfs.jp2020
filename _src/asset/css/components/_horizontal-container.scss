@@ -7,7 +7,7 @@ ul.horizontal-container{
 	list-style: none;
 	@include mq(sm){
 		flex-direction: column;
-		width: 95%;
+		// width: 95%;
 		margin: auto;
 	}
 }
