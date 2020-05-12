@@ -1,2 +1,0 @@
-@charset "UTF-8";.modalanime-wrapper{overflow:hidden;position:fixed;width:100%;height:100%;z-index:100;top:0;pointer-events:none}.modalanime-wrapper .modalanime{position:absolute;width:800px;height:800px;background-color:#252f39;border-radius:50%;pointer-events:none;-webkit-transform:scale(0, 0);-ms-transform:scale(0, 0);transform:scale(0, 0);top:-400px;right:-400px}
-/*# sourceMappingURL=_modalanime-wrapper.css.map */
